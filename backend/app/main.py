@@ -1,21 +1,15 @@
 from typing import Dict, List, Optional
-from pathlib import Path
-
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
 from pydantic import BaseModel
-
 from .rag import run_agent
 
-# --------------------------------------------------
-# App initialization
-# --------------------------------------------------
-app = FastAPI()
+app = FastAPI(
+    title="Santosh Resume Chat API",
+    version="1.0.0"
+)
 
-# --------------------------------------------------
-# CORS (MUST be right after app = FastAPI())
-# --------------------------------------------------
+# ---------------- CORS ----------------
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -28,49 +22,32 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# --------------------------------------------------
-# Paths (for optional frontend serving)
-# --------------------------------------------------
-_ROOT_DIR = Path(__file__).resolve().parents[2]
-_DIST_DIR = _ROOT_DIR / "dist"
-
-# --------------------------------------------------
-# Models
-# --------------------------------------------------
+# ---------------- Models ----------------
 class ChatRequest(BaseModel):
     message: str
     session_id: Optional[str] = "default"
 
-
 class ChatResponse(BaseModel):
     reply: str
 
-# --------------------------------------------------
-# In-memory chat history
-# --------------------------------------------------
+# ---------------- Memory ----------------
 _memory: Dict[str, List[Dict[str, str]]] = {}
 _MAX_MEMORY = 6
 
-
-def _get_memory(session_id: str) -> List[Dict[str, str]]:
+def _get_memory(session_id: str):
     return _memory.get(session_id, [])
 
-
-def _append_memory(session_id: str, role: str, content: str) -> None:
+def _append_memory(session_id: str, role: str, content: str):
     history = _memory.get(session_id, [])
     history.append({"role": role, "content": content})
     _memory[session_id] = history[-_MAX_MEMORY:]
 
-
-# --------------------------------------------------
-# API routes
-# --------------------------------------------------
-@app.post("/chat", response_model=ChatResponse)
+# ---------------- Routes ----------------
 @app.post("/api/chat", response_model=ChatResponse)
-async def chat(request: ChatRequest) -> ChatResponse:
+async def chat(request: ChatRequest):
     session_id = request.session_id or "default"
-
     memory = _get_memory(session_id)
+
     reply = run_agent(request.message, memory)
 
     _append_memory(session_id, "user", request.message)
@@ -78,21 +55,6 @@ async def chat(request: ChatRequest) -> ChatResponse:
 
     return ChatResponse(reply=reply)
 
-
-# --------------------------------------------------
-# Optional frontend serving (only if dist exists)
-# --------------------------------------------------
-if _DIST_DIR.exists():
-
-    @app.get("/{full_path:path}")
-    async def serve_frontend(full_path: str):
-        file_path = _DIST_DIR / full_path
-
-        if file_path.is_file():
-            return FileResponse(file_path)
-
-        index_file = _DIST_DIR / "index.html"
-        if index_file.is_file():
-            return FileResponse(index_file)
-
-        raise HTTPException(status_code=404, detail="Frontend not built.")
+@app.get("/health")
+async def health():
+    return {"status": "ok"}
