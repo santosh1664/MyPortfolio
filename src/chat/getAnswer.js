@@ -1,6 +1,6 @@
 import { resumeProfile } from "./resumeData";
 
-export function getAnswer(question) {
+function localAnswer(question) {
   const q = question.toLowerCase();
 
   if (q.includes("tell me about yourself") || q.includes("introduce")) {
@@ -56,4 +56,26 @@ export function getAnswer(question) {
   }
 
   return resumeProfile.summary;
+}
+
+export async function getAnswer(question) {
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/ask`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ question }),
+    });
+
+    if (!response.ok) throw new Error("Backend failed");
+
+    const data = await response.json();
+    return data.answer;
+  } catch (error) {
+    console.warn("Using local fallback:", error);
+    return localAnswer(question);
+  }
 }
