@@ -6,15 +6,16 @@ from .rag import run_agent
 
 app = FastAPI(
     title="Santosh Resume Chat API",
-    version="1.0.0"
+    version="1.0.0",
 )
 
-# ---------------- CORS ----------------
+# ✅ CORS — THIS IS THE CORRECT PLACE
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://santoshroy.info",
         "https://www.santoshroy.info",
+        "https://myportfolio-4ncxwg.fly.dev",
         "http://localhost:5173",
     ],
     allow_credentials=True,
@@ -22,27 +23,32 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ---------------- Models ----------------
+# ---------- Models ----------
 class ChatRequest(BaseModel):
     message: str
     session_id: Optional[str] = "default"
 
+
 class ChatResponse(BaseModel):
     reply: str
 
-# ---------------- Memory ----------------
+
+# ---------- Memory ----------
 _memory: Dict[str, List[Dict[str, str]]] = {}
 _MAX_MEMORY = 6
 
+
 def _get_memory(session_id: str):
     return _memory.get(session_id, [])
+
 
 def _append_memory(session_id: str, role: str, content: str):
     history = _memory.get(session_id, [])
     history.append({"role": role, "content": content})
     _memory[session_id] = history[-_MAX_MEMORY:]
 
-# ---------------- Routes ----------------
+
+# ---------- Routes ----------
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest):
     session_id = request.session_id or "default"
@@ -54,6 +60,7 @@ async def chat(request: ChatRequest):
     _append_memory(session_id, "assistant", reply)
 
     return ChatResponse(reply=reply)
+
 
 @app.get("/health")
 async def health():
