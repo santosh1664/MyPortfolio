@@ -15,17 +15,13 @@ services:
       - key: EMBEDDING_MODEL
         value: all-MiniLM-L6-v2
       - key: CHROMA_PATH
-        value: /var/data/chroma
+        value: /tmp/chroma
       - key: RAG_TOP_K
         value: "4"
       - key: OPENAI_HTTP_REFERER
         sync: false
       - key: OPENAI_APP_TITLE
         value: Resume Chatbot
-    disk:
-      name: chroma-data
-      mountPath: /var/data
-      sizeGB: 1
 
   - type: web
     name: portfolio-frontend
