@@ -3,7 +3,7 @@
 
 export const personalInfo = {
   name: "Durgasantosh",
-  title: "Sofyware Engineer",
+  title: "Software Engineer",
   email: "gaddamsantosh03@gmail.com",
   linkedin: "https://www.linkedin.com/in/durgasantosh-g/",
   github: "https://github.com/santosh1664",
@@ -137,7 +137,7 @@ export const projects = [
   tech: ["Flutter", "Dart", "TensorFlow Lite", "Computer Vision", "Text-to-Speech (TTS)", "Object Detection"],
   description: "An AI-powered talking camera mobile application that helps blind and visually impaired users perceive their surroundings independently. The app captures real-time images, identifies objects using on-device ML models, and narrates the scene through natural text-to-speech, enabling hands-free, accessible environment understanding.",
   date: "Jan 2024 – Apr 2024",
-  githubLink: "https://github.com/santosh1664/<<ADD_YOUR_REPO>>",
+  githubLink: null,
   liveLink: null,
   category: "Accessibility / Mobile AI",
   iconName: "FaCamera",

@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionTitle from './SectionTitle.jsx';
 import { certifications } from '../data/portfolioData.jsx';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -22,7 +22,7 @@ const Certifications = () => (
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         {certifications.map((cert, index) => (
-          <motion.div
+          <Motion.div
             key={cert.title}
             className="bg-secondary-bg rounded-lg shadow-xl overflow-hidden"
             variants={cardVariants}
@@ -60,7 +60,7 @@ const Certifications = () => (
                 Verify Certification
               </a>
             </div>
-          </motion.div>
+          </Motion.div>
         ))}
       </div>
     </div>

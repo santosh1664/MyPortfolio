@@ -3,7 +3,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { personalInfo, socialLinks } from '../data/portfolioData.jsx';
 import { FaDownload, FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 // Map icon names to components for social links
 const heroSocialIconMap = {
@@ -26,7 +26,7 @@ const Hero = () => {
       </div> */}
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -60,9 +60,9 @@ const Hero = () => {
           <p className="text-text-secondary max-w-2xl mx-auto mb-8 text-base sm:text-lg">
             {personalInfo.bio}
           </p>
-        </motion.div>
+        </Motion.div>
 
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -85,9 +85,9 @@ const Hero = () => {
           >
             <FaDownload className="mr-2" /> Download CV
           </a>
-        </motion.div>
+        </Motion.div>
 
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
@@ -105,7 +105,7 @@ const Hero = () => {
               {getHeroSocialIcon(link.iconName, 28)}
             </a>
           ))}
-        </motion.div>
+        </Motion.div>
       </div>
       
       {/* Scroll down indicator (optional) */}

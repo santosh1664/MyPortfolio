@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionTitle from './SectionTitle.jsx';
 import { personalInfo, socialLinks } from '../data/portfolioData.jsx';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 // Map icon names to components for social links
@@ -33,7 +33,7 @@ const Contact = () => {
     <section id="contact" className="py-20 bg-primary-bg">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle id="contact-title">Get In Touch</SectionTitle>
-        <motion.div 
+        <Motion.div 
           className="max-w-xl mx-auto text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +52,7 @@ const Contact = () => {
 
           <div className="mt-12 flex justify-center space-x-6">
             {Object.entries(socialLinks).map(([key, link], index) => (
-              <motion.a
+              <Motion.a
                 key={key}
                 href={link.url}
                 target="_blank"
@@ -66,10 +66,10 @@ const Contact = () => {
                 viewport={{ once: true }}
               >
                 {getSocialIcon(link.iconName, 32)}
-              </motion.a>
+              </Motion.a>
             ))}
           </div>
-        </motion.div>
+        </Motion.div>
       </div>
     </section>
   );

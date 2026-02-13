@@ -2,7 +2,14 @@ from typing import Dict, List, Optional
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from .config import settings
 from .rag import run_agent
+
+_DEFAULT_ALLOWED_ORIGINS = [
+    "https://santoshroy.info",
+    "https://www.santoshroy.info",
+    "http://localhost:5173",
+]
 
 app = FastAPI(
     title="Santosh Resume Chat API",
@@ -10,14 +17,10 @@ app = FastAPI(
 )
 
 # ✅ CORS — THIS IS THE CORRECT PLACE
+allow_origins = list(settings.cors_allow_origins) or _DEFAULT_ALLOWED_ORIGINS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://santoshroy.info",
-        "https://www.santoshroy.info",
-        "https://myportfolio-4ncxwg.fly.dev",
-        "http://localhost:5173",
-    ],
+    allow_origins=allow_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

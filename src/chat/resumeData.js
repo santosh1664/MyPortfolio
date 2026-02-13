@@ -18,7 +18,7 @@ export const resumeProfile = {
     "I am an AWS Certified Developer – Associate and have completed an Applied Data Science certification from IBM.",
   salary: {
     default:
-      "My expected salary range is $85,000 to $110,000, depending on the role scope and overall compensation package.",
+      "My expected salary range is $85,000 to $125,000, depending on the role scope and overall compensation package.",
     recruiterProvided:
       "My expectations are aligned with the budget range defined for this role.",
   },

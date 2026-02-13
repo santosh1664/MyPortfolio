@@ -16,6 +16,8 @@ dist-ssr
 .env
 backend/data/
 backend/.env
+__pycache__/
+*.py[cod]
 
 # Editor directories and files
 .vscode/*
