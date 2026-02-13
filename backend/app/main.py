@@ -1,9 +1,11 @@
+import asyncio
 from typing import Dict, List, Optional
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from .config import settings
-from .rag import run_agent
+from .rag import answer_from_knowledge, run_agent
+from .vector_store import get_collection
 
 _DEFAULT_ALLOWED_ORIGINS = [
     "https://santoshroy.info",
@@ -39,6 +41,7 @@ class ChatResponse(BaseModel):
 # ---------- Memory ----------
 _memory: Dict[str, List[Dict[str, str]]] = {}
 _MAX_MEMORY = 6
+_CHAT_TIMEOUT_SECONDS = 5.0
 
 
 def _get_memory(session_id: str):
@@ -52,12 +55,29 @@ def _append_memory(session_id: str, role: str, content: str):
 
 
 # ---------- Routes ----------
+@app.on_event("startup")
+async def warm_vector_store():
+    try:
+        get_collection().count()
+    except Exception as exc:
+        print(f"Vector store warm-up failed: {exc}")
+
+
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest):
     session_id = request.session_id or "default"
     memory = _get_memory(session_id)
 
-    reply = run_agent(request.message, memory)
+    try:
+        reply = await asyncio.wait_for(
+            asyncio.to_thread(run_agent, request.message, memory),
+            timeout=_CHAT_TIMEOUT_SECONDS,
+        )
+    except asyncio.TimeoutError:
+        reply = answer_from_knowledge(request.message)
+    except Exception as exc:
+        print(f"Chat handler fallback due to error: {exc}")
+        reply = answer_from_knowledge(request.message)
 
     _append_memory(session_id, "user", request.message)
     _append_memory(session_id, "assistant", reply)

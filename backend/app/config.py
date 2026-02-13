@@ -24,7 +24,7 @@ class Settings:
     openai_http_referer: str = os.getenv("OPENAI_HTTP_REFERER", "")
     openai_app_title: str = os.getenv("OPENAI_APP_TITLE", "Resume Chatbot")
     embedding_model: str = os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
-    chat_model: str = os.getenv("OPENAI_CHAT_MODEL", "gpt-4o-mini")
+    chat_model: str = os.getenv("OPENAI_CHAT_MODEL", "openai/gpt-4o-mini")
     chroma_path: str = os.getenv("CHROMA_PATH", "backend/data/chroma")
     top_k: int = int(os.getenv("RAG_TOP_K", "4"))
     cors_allow_origins: tuple[str, ...] = _parse_origins(os.getenv("CORS_ALLOW_ORIGINS", ""))
