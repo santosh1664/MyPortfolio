@@ -3,7 +3,7 @@ import SectionTitle from './SectionTitle.jsx';
 import { projects } from '../data/portfolioData.jsx';
 import { FaGithub, FaExternalLinkAlt, FaReact, FaDatabase, FaUniversalAccess, FaCode, FaComments } from 'react-icons/fa';
 import { SiFirebase } from 'react-icons/si';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 // Map icon names to components
 const projectIconMap = {
@@ -35,7 +35,7 @@ const cardVariants = {
 
 const ProjectCard = ({ project, index }) => {
   return (
-    <motion.div
+    <Motion.div
       className="relative bg-secondary-bg rounded-lg shadow-xl overflow-hidden flex flex-col h-full group transform hover:-translate-y-2 hover:bg-secondary-bg/80 hover:shadow-accent-1/10 transition-all transition-colors duration-300"
       variants={cardVariants}
       initial="hidden"
@@ -128,7 +128,7 @@ const ProjectCard = ({ project, index }) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </Motion.div>
   );
 };
 

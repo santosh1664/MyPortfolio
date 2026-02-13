@@ -125,7 +125,7 @@ function ResumeChatWidget() {
           message.pending ? { ...message, text: reply, pending: false } : message
         )
       );
-    } catch (error) {
+    } catch {
       setMessages((prev) =>
         prev.map((message) =>
           message.pending

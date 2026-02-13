@@ -2,7 +2,7 @@ import React from 'react';
 import SectionTitle from './SectionTitle.jsx';
 import { leadershipAndInvolvement } from '../data/portfolioData.jsx';
 import { FaAward, FaUsers, FaBriefcase, FaMedal } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 const involvementItemVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -44,7 +44,7 @@ const Involvement = () => {
           <div className="absolute left-[calc(1rem-0.5px)] sm:left-[calc(1.25rem-0.5px)] top-0 h-full w-0.5 bg-primary-bg rounded-full"></div>
 
           {leadershipAndInvolvement.map((item, index) => (
-            <motion.div
+            <Motion.div
               key={index}
               className="mb-10 flex"
               custom={index}
@@ -82,7 +82,7 @@ const Involvement = () => {
                   <p className="text-text-secondary/80 italic text-xs sm:text-sm">Details forthcoming.</p>
                 )}
               </div>
-            </motion.div>
+            </Motion.div>
           ))}
         </div>
       </div>

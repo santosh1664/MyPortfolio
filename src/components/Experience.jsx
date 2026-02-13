@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionTitle from './SectionTitle.jsx';
 import { experience } from '../data/portfolioData.jsx';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 const experienceItemVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -23,7 +23,7 @@ const Experience = () => (
 
       <div className="max-w-5xl mx-auto mt-12 space-y-8">
         {experience.map((item, index) => (
-          <motion.div
+          <Motion.div
             key={`${item.company}-${item.role}`}
             className="p-5 sm:p-6 bg-primary-bg rounded-lg shadow-xl hover:shadow-accent-1/20 transition-shadow duration-300"
             custom={index}
@@ -69,7 +69,7 @@ const Experience = () => (
                 ))}
               </div>
             ) : null}
-          </motion.div>
+          </Motion.div>
         ))}
       </div>
     </div>

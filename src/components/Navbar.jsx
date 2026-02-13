@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
-import { personalInfo, socialLinks } from '../data/portfolioData.jsx';
+import { personalInfo } from '../data/portfolioData.jsx';
 import { FaBars, FaTimes, FaSun, FaMoon, FaUsers, FaCertificate } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 const navItems = [
   { name: 'Home', to: 'hero' },
@@ -39,7 +39,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <motion.nav
+    <Motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -104,7 +104,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
@@ -149,9 +149,9 @@ const Navbar = () => {
               Resume
             </a>
           </div>
-        </motion.div>
+        </Motion.div>
       )}
-    </motion.nav>
+    </Motion.nav>
   );
 };
 

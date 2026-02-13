@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionTitle from './SectionTitle.jsx';
-import { personalInfo, education } from '../data/portfolioData.jsx';
-import { motion } from 'framer-motion';
+import { education } from '../data/portfolioData.jsx';
+import { motion as Motion } from 'framer-motion';
 import { FaUniversity, FaSchool } from 'react-icons/fa'; // Example icons
 
 const cardVariants = {
@@ -22,7 +22,7 @@ const About = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle id="about-title">About Me</SectionTitle>
         
-        <motion.div 
+        <Motion.div 
           className="max-w-3xl mx-auto text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -35,12 +35,12 @@ const About = () => {
           {/* <p className="text-lg text-text-secondary leading-relaxed mt-4">
             Outside of code, you'll find me shooting photos—capturing street scenes, candid moments, and campus life, then polishing them in Lightroom. It's my way to stay curious about composition, light, and storytelling.
           </p> */}
-        </motion.div>
+        </Motion.div>
 
         <h3 className="text-2xl font-semibold text-center text-accent-1 mb-8 font-mono">Education</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-8 justify-items-center justify-center">
           {education.map((edu, index) => (
-            <motion.div
+            <Motion.div
               key={index}
               className="w-full max-w-sm bg-primary-bg p-6 rounded-lg shadow-xl hover:shadow-accent-1/20 transition-shadow duration-300"
               variants={cardVariants}
@@ -59,7 +59,7 @@ const About = () => {
               <p className="text-text-secondary font-medium">{edu.degree}</p>
               <p className="text-sm text-text-secondary font-mono">{edu.duration}</p>
               <p className="text-sm text-accent-1 font-mono mt-1">{edu.score}</p>
-            </motion.div>
+            </Motion.div>
           ))}
         </div>
       </div>
