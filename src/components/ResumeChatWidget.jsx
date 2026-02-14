@@ -55,8 +55,8 @@ const questionCategories = [
     ],
   },
   {
-    id: 'logistics',
-    title: 'Logistics',
+    id: 'Status & Relocation',
+    title: 'Status & Relocation',
     questions: [
       'Are you open to relocation?',
       'What is your visa status?',
@@ -67,9 +67,7 @@ const questionCategories = [
   {
     id: 'comp',
     title: 'Compensation',
-    questions: [
-      'What is your expected salary?',
-      'What is your desired compensation range?',
+    questions: ['What is your desired compensation range?',
     ],
   },
 ];

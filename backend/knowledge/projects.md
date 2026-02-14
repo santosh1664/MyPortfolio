@@ -17,5 +17,3 @@ Beyond Sight - Audible Graphs for the Visually Impaired
 Dynamic Pricing Prediction for Cabs
 - ML models to predict cab pricing using supervised and reinforcement learning.
 
-AI-Based Talking Camera App
-- Mobile application for real-time object detection and text-to-speech narration.
