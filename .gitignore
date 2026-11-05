@@ -1,5 +1,27 @@
+# Dependencies
+node_modules/
+.venv/
+backend/.venv/
+
+# Build outputs
+dist/
+dist-ssr/
+docs/
+
+# Test outputs and caches
+.pytest_cache/
+__pycache__/
+*.py[cod]
+test-results/
+
+# Environment and local-only files
+.env
+backend/.env
+*.local
+backend/data/
+
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -7,22 +29,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-.venv
-backend/.venv
-dist
-dist-ssr
-*.local
-.env
-backend/data/
-backend/.env
-__pycache__/
-*.py[cod]
-
-# Editor directories and files
+# Editor and OS files
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*

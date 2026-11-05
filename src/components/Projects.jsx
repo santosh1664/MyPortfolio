@@ -67,7 +67,7 @@ const ProjectCard = ({ project, index }) => {
           <h3 className="text-xl sm:text-2xl font-semibold text-accent-1 font-mono">{project.title}</h3>
           {project.iconName && <div>{getProjectIcon(project.iconName)}</div>}
         </div>
-        <p className="text-xs text-text-secondary font-mono">{project.date} | {project.category}</p>
+        <p className="text-xs text-text-secondary font-mono">{project.date}</p>
         <p className="text-sm text-text-secondary leading-relaxed text-left">{project.description}</p>
 
         <div className="mt-auto pt-1">

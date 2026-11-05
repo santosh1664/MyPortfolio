@@ -8,21 +8,19 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/durgasantosh-g/",
   github: "https://github.com/santosh1664",
   resumeLink: "/Durgasantosh_G_Software_Engineer.pdf", // Make sure your resume is in public/
-  bio: "Software Engineer with 3+ years of experience across full-stack development, building scalable applications using Java, Spring Boot, React, and AWS. Experienced in microservices, CI/CD pipelines, and delivering enterprise-grade systems in Agile environments.",
-  shortBio: "I build things for the web." // For Hero section
+  bio: "Software Engineer with 3+ years of experience building responsive and high-performance web applications using React.js and Spring Boot. Focused on reusable UI components, asynchronous data flows, secure RESTful APIs, microservices-based architectures, AWS-based CI/CD, and AI-powered conversational systems.",
+  shortBio: "I build high-performance full-stack and AI-driven web systems." // For Hero section
 };
 
 export const education = [
   {
     institution: "University of North Texas(UNT), Denton, Texas",
     degree: "Master of Science in Computer Science",
-    duration: "Aug 2023 – May 2025",
     score: "CGPA: 3.82/4",
   },
   {
     institution: " Vellore Institute of Technology(VIT), Chennai",
     degree: "Bachelor of Technology in Computer Science",
-    duration: "Aug 2019 – May 2023",
   },
 
 ];
@@ -37,29 +35,47 @@ export const certifications = [
     verifyUrl: "https://aws.amazon.com/verification",
     image: "",
   },
+  {
+    title: "Applied Data Science",
+    issuer: "IBM",
+    issued: "",
+    expires: "",
+    validationId: "",
+    verifyUrl: "",
+    image: "",
+  },
 ];
 
 export const experience = [
   {
     role: "Software Engineer",
     company: "Citi Group",
-    location: "Dallas, Texas, USA",
+    location: "New Jersey, USA",
     duration: "May 2025 – Present",
     tech: [
       "React.js",
       "Java 17",
       "Spring Boot",
-      "Spring Cloud",
+      "Spring Security",
       "Apache Kafka",
       "AWS",
       "Docker",
       "Kubernetes",
-      "Jenkins"
+      "Jenkins",
+      "JWT",
+      "DynamoDB",
+      "GitLab CI"
     ],
     points: [
-      "Build and maintain full-stack features for enterprise platforms.",
-      "Deliver scalable services and resilient integrations across teams.",
-      "Support testing, deployment, and production reliability workflows."
+      "Developed and enhanced user-facing web applications using React.js, building reusable and responsive UI components for enterprise financial platforms.",
+      "Improved frontend performance by about 25% through optimized API consumption, memoization, efficient state management, and fewer unnecessary re-renders.",
+      "Implemented client-side validation, dynamic form handling, and conditional rendering logic to improve usability and reduce backend validation errors.",
+      "Integrated React components with Java 17 and Spring Boot microservices to keep frontend-backend communication consistent and reliable.",
+      "Developed and maintained RESTful APIs with validation, exception handling, and secure access control using Spring Security and JWT-based authentication.",
+      "Worked with Kafka and DynamoDB to support reliable backend processing and low-latency UI-driven workflows.",
+      "Participated in API contract discussions and maintained backward compatibility to reduce frontend regressions during releases.",
+      "Diagnosed and resolved production issues across frontend and backend layers, improving stability and reducing recurring defects.",
+      "Contributed to CI/CD pipelines and containerized deployments using Docker, Kubernetes, Jenkins, and GitLab CI."
     ],
   },
   {
@@ -69,47 +85,54 @@ export const experience = [
     duration: "Jun 2021 – Jul 2023",
     tech: [
       "React",
-      "Angular",
+      "Angular 15",
       "Java",
       "Spring Boot",
       "Microservices",
       "Apache Kafka",
-      "AWS"
+      "AWS",
+      "Docker",
+      "Jenkins"
     ],
     points: [
-      "Contributed to end-to-end full-stack development initiatives.",
-      "Built frontend experiences and backend services with Java and Spring Boot.",
-      "Supported microservices and event-driven workflows with Kafka."
+      "Worked on end-to-end feature development across Angular 15, React.js, and Spring Boot within a microservices-based financial application.",
+      "Built reusable UI components, client-side form validations, and dynamic data handling, improving development speed by about 30%.",
+      "Integrated frontend modules with REST APIs and handled async loading and error states to keep user interactions smooth.",
+      "Developed RESTful APIs using Java and Spring Boot with input validation, exception handling, and secure service integration.",
+      "Assisted with Kafka-based workflows for asynchronous transaction-related backend processing.",
+      "Contributed to PCI DSS-compliant financial modules, reducing transaction processing errors by around 20% through stronger validation and error handling.",
+      "Participated in AWS deployments and CI/CD automation using Jenkins and Docker in Agile release cycles."
     ],
   },
 ];
 
 export const projects = [
   {
-    title: "Agentic AI Resume Chatbot with RAG (In Progress)",
+    title: "Agentic AI Resume Chatbot with RAG",
     tech: [
       "React",
-      "Rule-Based NLP",
+      "FastAPI",
+      "ChromaDB",
+      "SentenceTransformers",
       "RAG Pipeline",
-      "Embeddings",
-      "Intent Routing",
-      "Prompt Templates"
+      "GPT-4o-mini",
+      "Session Memory"
     ],
     description:
-      "Building an interactive resume chatbot that uses AI-style patterns like intent routing, embeddings, and retrieval-augmented generation (RAG) over structured resume data to answer recruiter questions instantly. Features a guided category menu, quick question chips, and a recruiter-focused UX with eye-catching micro-interactions for fast screening.",
-    date: "Jan 2025 – Present",
+      "Built a production-ready agentic AI chatbot for my portfolio using Retrieval-Augmented Generation (RAG) with a React frontend and FastAPI backend. It uses ChromaDB vector search, SentenceTransformers embeddings, session-based memory, and grounded responses with deterministic fallback behavior.",
+    date: "Jan 2025 – May 2025",
     githubLink: null,
-    liveLink: null,
-    category: "Ongoing Project",
+    liveLink: "https://santoshroy.info",
+    category: "Completed Project",
     iconName: "FaComments",
   },
   {title: "Accessible Weather & Shelter Finder",
     tech: ["React", "Node.js", "MongoDB", "Text-to-Speech", "Geolocation", "Accessibility"],
-    description:"Currently building an accessible, life-saving web application for blind and visually impaired users. Provides real-time weather updates, severe weather alerts, and nearest shelter locations with full accessibility support including keyboard navigation, high-contrast UI, shortcut keys, and integrated text-to-speech.",
-    date: "Oct 2024 – Present",
+    description:"Built an accessible, life-saving web application for blind and visually impaired users. Provides real-time weather updates, severe weather alerts, and nearest shelter locations with full accessibility support including keyboard navigation, high-contrast UI, shortcut keys, and integrated text-to-speech.",
+    date: "Oct 2024 – May 2025",
     githubLink: null,
-    liveLink: null,
-    category: "Accessibility / Current Project",
+    liveLink: "https://accessible-weather-shelter-1.onrender.com/",
+    category: "Accessibility / Completed Project",
     iconName: "FaUniversalAccess",
   },
   { title: "Beyond Sight – Audible Graphs for the Visually Impaired",
@@ -217,23 +240,29 @@ export const skills = {
     { name: "JavaScript", iconName: "SiJavascript" },
     { name: "TypeScript", iconName: "SiTypescript" },
     { name: "C++", iconName: "SiCplusplus" },
-    { name: "Go", iconName: "SiGo" },
+    { name: "C#", iconName: "SiCsharp" },
+    { name: "SQL", iconName: "FaDatabase" },
     { name: "HTML5", iconName: "FaHtml5" },
     { name: "CSS3", iconName: "FaCss3Alt" },
-    { name: "MySQL", iconName: "SiMysql" },
-    { name: "PostgreSQL", iconName: "SiPostgresql" },
-    { name: "MongoDB", iconName: "SiMongodb" },
-    { name: "DynamoDB", iconName: "SiAmazondynamodb" }
+    { name: "XML", iconName: "FaCode" },
+    { name: "JSON", iconName: "FaCode" }
   ],
 
   frameworksAndLibraries: [
     { name: "Spring Boot", iconName: "SiSpringboot" },
     { name: "React.js", iconName: "FaReact" },
-    { name: "Next.js", iconName: "SiNextdotjs" },
-    { name: "Node.js", iconName: "FaNodeJs" },
-    { name: "Express.js", iconName: "SiExpress" },
-    { name: "Flask", iconName: "SiFlask" },
-    { name: "Django", iconName: "SiDjango" },
+    { name: "Angular", iconName: "FaAngular" },
+    { name: "Bootstrap 5", iconName: "FaBootstrap" },
+    { name: "React Hooks", iconName: "FaReact" },
+    { name: "Redux", iconName: "FaProjectDiagram" },
+    { name: "GraphQL", iconName: "FaProjectDiagram" },
+    { name: "jQuery", iconName: "SiJquery" },
+    { name: "AJAX", iconName: "FaExchangeAlt" },
+    { name: "Spring MVC", iconName: "FaCloud" },
+    { name: "Spring REST", iconName: "FaCloud" },
+    { name: "Spring Security", iconName: "FaLock" },
+    { name: "Spring Batch", iconName: "FaCogs" },
+    { name: "Spring ORM", iconName: "FaDatabase" },
     { name: "REST APIs", iconName: "FaCloud" },
     { name: "Microservices", iconName: "FaProjectDiagram" },
   ],
@@ -242,32 +271,41 @@ export const skills = {
     { name: "TensorFlow", iconName: "SiTensorflow" },
     { name: "PyTorch", iconName: "SiPytorch" },
     { name: "Scikit-Learn", iconName: "SiScikitlearn" },
+    { name: "AI Agents", iconName: "FaRobot" },
+    { name: "RAG", iconName: "FaBrain" },
+    { name: "LLM Orchestration", iconName: "FaCogs" },
+    { name: "SentenceTransformers", iconName: "FaProjectDiagram" },
     { name: "Pandas", iconName: "SiPandas" },
     { name: "NumPy", iconName: "SiNumpy" },
     { name: "OCR", iconName: "FaEye" },
     { name: "NLP", iconName: "FaLanguage" },
     { name: "Kafka", iconName: "SiApachekafka" },
-    { name: "Spark", iconName: "SiApachespark" },
     { name: "ETL Pipelines", iconName: "FaCogs" },
-    { name: "Data Streaming", iconName: "FaStream" }
+    { name: "Data Streaming", iconName: "FaStream" },
+    { name: "Scikit-Learn", iconName: "SiScikitlearn" }
   ],
 
   toolsAndPlatforms: [
     { name: "AWS", iconName: "FaAws" },
-    { name: "GCP", iconName: "SiGooglecloud" },
-    { name: "Azure", iconName: "FaWindows" },
     { name: "Kubernetes", iconName: "SiKubernetes" },
     { name: "Docker", iconName: "FaDocker" },
     { name: "Git", iconName: "FaGitAlt" },
-    { name: "GitHub Actions", iconName: "SiGithubactions" },
     { name: "Jenkins", iconName: "SiJenkins" },
-    { name: "Terraform", iconName: "SiTerraform" },
     { name: "Linux", iconName: "FaLinux" },
-    { name: "Bash", iconName: "SiGnubash" },
-    { name: "Jira", iconName: "SiJira" },
     { name: "Postman", iconName: "SiPostman" },
     { name: "VS Code", iconName: "SiVscodium" },
-    { name: "IntelliJ IDEA", iconName: "SiIntellijidea" }
+    { name: "IntelliJ IDEA", iconName: "SiIntellijidea" },
+    { name: "Eclipse", iconName: "FaCode" },
+    { name: "Maven", iconName: "FaCogs" },
+    { name: "Oracle", iconName: "FaDatabase" },
+    { name: "PostgreSQL", iconName: "SiPostgresql" },
+    { name: "MySQL", iconName: "SiMysql" },
+    { name: "SQL Server", iconName: "FaDatabase" },
+    { name: "DB2", iconName: "FaDatabase" },
+    { name: "MongoDB", iconName: "SiMongodb" },
+    { name: "DynamoDB", iconName: "SiAmazondynamodb" },
+    { name: "RabbitMQ", iconName: "FaExchangeAlt" },
+    { name: "ChromaDB", iconName: "FaDatabase" }
   ],
 
   coreCompetencies: [

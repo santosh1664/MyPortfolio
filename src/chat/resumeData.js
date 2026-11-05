@@ -4,14 +4,14 @@ export const resumeProfile = {
   location: "Dallas, Texas, USA",
   openToRelocation: true,
   summary:
-    "My name is Durgasantosh G. I am a Software Engineer with over 3 years of experience across full-stack development, cloud deployment, and enterprise application support. I currently work at Citi Group, where I build scalable systems using React, Java 17, Spring Boot, microservices, Kafka, and AWS. I hold a Master’s degree in Computer Science from the University of North Texas and have worked on impactful projects including an AI-powered accessibility system presented at ACM W4A ’24. I am also an AWS Certified Developer.",
+    "My name is Durgasantosh G. I am a Software Engineer with over 3 years of experience building responsive and high-performance web applications using React.js and Spring Boot. I completed my Master's in Computer Science at the University of North Texas, and my work has focused on reusable UI components, secure RESTful APIs, microservices-based architectures, AWS-based CI/CD workflows, production support, and AI-powered conversational systems.",
   experience: "I have over 3 years of professional experience as a Software Engineer.",
   currentJob:
-    "I currently work at Citi Group as a Software Engineer, where I develop full-stack applications using React, Java 17, Spring Boot, Kafka, and AWS.",
+    "I currently work at Citi Group as a Software Engineer, where I build React.js interfaces, integrate them with Java 17 and Spring Boot microservices, maintain secure RESTful APIs, and support Kafka, DynamoDB, Docker, Kubernetes, Jenkins, and GitLab CI workflows.",
   project:
     "One of my key projects is Beyond Sight, an AI-powered accessibility system that converts charts and graphs into audio narratives for visually impaired users. The project achieved 92% accuracy and was presented at ACM W4A ’24.",
   skills:
-    "My core skills include Java, Spring Boot, React, Angular, microservices, REST APIs, Apache Kafka, AWS, Docker, Kubernetes, and CI/CD pipelines.",
+    "My core skills include Java, Python, JavaScript, TypeScript, SQL, React.js, Angular, Spring Boot, Spring Security, RESTful APIs, microservices, Apache Kafka, RabbitMQ, AWS, Docker, Kubernetes, Jenkins, Git, Postman, and AI tooling such as RAG, AI agents, LLM orchestration, and SentenceTransformers.",
   angular:
     "I used Angular at Zensar Technologies while building responsive frontend interfaces alongside React.",
   certifications:
@@ -24,8 +24,8 @@ export const resumeProfile = {
   },
   visa: {
     status:
-      "I am currently on F-1 OPT with valid work authorization until June 28, 2026.",
-    stem: "Yes, I am eligible for a 24-month STEM OPT extension.",
-    sponsorship: "Yes, I will require H-1B sponsorship in the future.",
+      "I am legally authorized to work in the United States.",
+    stem: "I don’t have that information available right now, but I’m happy to help with my experience, projects, skills, or role fit.",
+    sponsorship: "I do not require sponsorship.",
   },
 };

@@ -1,10 +1,10 @@
 # Skills
 
-Languages: Java, Python, JavaScript, TypeScript, SQL, C++, C#, PL/SQL, Shell Scripting, HTML5, CSS3
-Java and Spring: Spring Boot, Spring MVC, Spring Security, Spring Batch, Spring ORM
-Backend: JPA, Hibernate, JDBC, Servlets, JSP, JSTL, JMS, EJB, JavaBeans, JVM
-Microservices and Messaging: Microservices architecture, RESTful APIs, Apache Kafka, RabbitMQ
-Frontend: React.js, React Hooks, Angular, Bootstrap, jQuery, AJAX, JSON, XML, Redux, GraphQL
+Programming Languages: Java, Python, JavaScript, TypeScript, C++, C#, SQL, HTML5, CSS3
+Frontend: React.js, React Hooks, Angular, Bootstrap 5, jQuery, AJAX, JSON, XML, Redux, GraphQL
+Java and Spring: Spring Boot, Spring MVC, Spring REST, Spring Security, Spring Batch, Spring ORM
+Microservices and Messaging: Microservices Architecture, RESTful APIs, Apache Kafka, RabbitMQ, Java Multithreading
 Cloud and DevOps: AWS (EC2, S3, RDS, SQS, SNS, CloudWatch), Docker, Kubernetes, Jenkins, Git, Maven, Postman
-Databases: Oracle, PostgreSQL, MySQL, SQL Server, DB2, MongoDB
-Tools and OS: IntelliJ IDEA, Eclipse, VS Code, Windows, macOS, Linux
+AI and Generative AI: AI Agents, Retrieval-Augmented Generation (RAG), LLM Orchestration, SentenceTransformers
+Databases: Oracle, PostgreSQL, MySQL, SQL Server, DB2, MongoDB, Vector Databases (ChromaDB)
+Tools and OS: IntelliJ IDEA, Eclipse, VS Code, Linux

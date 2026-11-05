@@ -1,87 +1,55 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { FaComments } from 'react-icons/fa';
+import { getApiBaseUrl } from '../chat/apiBaseUrl';
 import './ResumeChatWidget.css';
 
-const questionCategories = [
-  {
-    id: 'about',
-    title: 'About You',
-    questions: [
-      'Tell me about yourself',
-      'What is your professional background?',
-      'How many years of experience do you have?',
-      'What is your current role?',
-    ],
-  },
-  {
-    id: 'work',
-    title: 'Work Experience',
-    questions: [
-      'Where do you currently work?',
-      'What do you do at Citi Group?',
-      'What technologies do you use in your current job?',
-      'What did you do at Zensar Technologies?',
-    ],
-  },
-  {
-    id: 'projects',
-    title: 'Projects & Impact',
-    questions: [
-      'Tell me about your recent projects',
-      'What is the Beyond Sight project?',
-      'What impact did your projects have?',
-      'Have you worked on AI or machine learning projects?',
-    ],
-  },
-  {
-    id: 'skills',
-    title: 'Skills & Tech Stack',
-    questions: [
-      'What are your core technical skills?',
-      'Do you have experience with microservices?',
-      'What frontend technologies do you use?',
-      'What backend technologies do you specialize in?',
-      'Do you have AWS or cloud experience?',
-    ],
-  },
-  {
-    id: 'education',
-    title: 'Education & Certifications',
-    questions: [
-      'What is your highest qualification?',
-      'Where did you complete your master’s degree?',
-      'Do you have any certifications?',
-      'Are you AWS certified?',
-    ],
-  },
-  {
-    id: 'Status & Relocation',
-    title: 'Status & Relocation',
-    questions: [
-      'Are you open to relocation?',
-      'What is your visa status?',
-      'Are you eligible for STEM OPT?',
-      'Will you need H1B sponsorship?',
-    ],
-  },
-  {
-    id: 'comp',
-    title: 'Compensation',
-    questions: ['What is your desired compensation range?',
-    ],
-  },
-];
+const FALLBACK_REPLY =
+  'I don’t have that information available right now, but I’m happy to help with my experience, projects, skills, or role fit.';
+const SERVICE_UNAVAILABLE_REPLY =
+  'Chat service is unavailable right now. Please try again later.';
+const LOCAL_GREETING =
+  'Hey - thanks for checking out my portfolio.\n\nThis is Durgasantosh. Feel free to ask me about my experience, projects, or role fit.';
+const TEASER_SESSION_KEY = 'chat_teaser_seen';
+const PANEL_STARTED_KEY = 'chat_started';
+const OPENER_DELAY_MS = 7000;
+const TEASER_COPY =
+  'Hi — my recent work has focused on AI-driven full-stack systems. I can walk you through the parts most relevant to your hiring needs.';
+
+function shouldEnableTeaser() {
+  if (typeof window === 'undefined') {
+    return false;
+  }
+
+  return (
+    window.matchMedia('(min-width: 768px)').matches &&
+    window.sessionStorage.getItem(TEASER_SESSION_KEY) !== 'true'
+  );
+}
+
+function createAssistantMessages(data) {
+  const reply = data?.reply || FALLBACK_REPLY;
+  const messages = [{ role: 'bot', text: reply }];
+  const nextQuestion = data?.next_question?.trim();
+
+  if (nextQuestion && reply.trim() !== nextQuestion) {
+    messages.push({ role: 'bot', text: nextQuestion, meta: 'next-question' });
+  }
+
+  return messages;
+}
+
+function createGreetingMessage() {
+  return [{ role: 'bot', text: LOCAL_GREETING, meta: 'local-greeting' }];
+}
 
 function ResumeChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    { role: 'bot', text: "Hi! I'm Roy. Ask me anything about Durgasantosh." },
-  ]);
+  const [showTeaser, setShowTeaser] = useState(false);
+  const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const messagesEndRef = useRef(null);
-  const [activeCategoryId, setActiveCategoryId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || '';
+  const apiBaseUrl = getApiBaseUrl();
 
   const sessionIdRef = useRef(
     typeof window !== 'undefined'
@@ -95,10 +63,54 @@ function ResumeChatWidget() {
     }
   }, []);
 
+  const markTeaserSeen = () => {
+    if (typeof window !== 'undefined') {
+      window.sessionStorage.setItem(TEASER_SESSION_KEY, 'true');
+    }
+    setShowTeaser(false);
+  };
+
+  const handleResponseMessages = (data) => {
+    const assistantMessages = createAssistantMessages(data);
+    setMessages((prev) =>
+      prev.flatMap((message) => (message.pending ? assistantMessages : [message]))
+    );
+  };
+
+  const openPanel = () => {
+    markTeaserSeen();
+    setIsOpen(true);
+    if (typeof window !== 'undefined') {
+      window.sessionStorage.setItem(PANEL_STARTED_KEY, 'true');
+    }
+    setMessages((prev) => {
+      if (prev.length > 0) {
+        return prev;
+      }
+      return createGreetingMessage();
+    });
+  };
+
+  const closePanel = () => {
+    setIsOpen(false);
+  };
+
+  const handleToggleClick = () => {
+    if (isOpen) {
+      closePanel();
+      return;
+    }
+
+    openPanel();
+  };
+
   const handleAsk = async (question) => {
     const trimmed = question.trim();
-    if (!trimmed || isLoading) return;
+    if (!trimmed || isLoading) {
+      return;
+    }
 
+    markTeaserSeen();
     setIsLoading(true);
     setMessages((prev) => [
       ...prev,
@@ -115,24 +127,16 @@ function ResumeChatWidget() {
           session_id: sessionIdRef.current,
         }),
       });
+      if (!response.ok) {
+        throw new Error(`Chat request failed with status ${response.status}`);
+      }
       const data = await response.json();
-      const reply = data?.reply || 'That information is not available in my resume. Please feel free to ask something else.';
-
+      handleResponseMessages(data);
+    } catch (error) {
+      console.error(error);
       setMessages((prev) =>
         prev.map((message) =>
-          message.pending ? { ...message, text: reply, pending: false } : message
-        )
-      );
-    } catch {
-      setMessages((prev) =>
-        prev.map((message) =>
-          message.pending
-            ? {
-                ...message,
-                text: 'That information is not available in my resume. Please feel free to ask something else.',
-                pending: false,
-              }
-            : message
+          message.pending ? { role: 'bot', text: SERVICE_UNAVAILABLE_REPLY } : message
         )
       );
     } finally {
@@ -142,11 +146,26 @@ function ResumeChatWidget() {
 
   const handleSend = () => {
     const trimmed = inputValue.trim();
-    if (!trimmed) return;
+    if (!trimmed) {
+      return;
+    }
 
     handleAsk(trimmed);
     setInputValue('');
   };
+
+  useEffect(() => {
+    if (!shouldEnableTeaser()) {
+      return undefined;
+    }
+
+    const timer = window.setTimeout(() => {
+      setShowTeaser(true);
+      window.sessionStorage.setItem(TEASER_SESSION_KEY, 'true');
+    }, OPENER_DELAY_MS);
+
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (isOpen && messagesEndRef.current) {
@@ -156,11 +175,20 @@ function ResumeChatWidget() {
 
   return (
     <div className="resume-chat-widget">
+      {showTeaser && !isOpen ? (
+        <button
+          className="resume-chat-widget__teaser"
+          type="button"
+          onClick={openPanel}
+        >
+          {TEASER_COPY}
+        </button>
+      ) : null}
       <button
         className="resume-chat-widget__toggle"
         type="button"
         aria-label={isOpen ? 'Close chat' : 'Open chat'}
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={handleToggleClick}
       >
         <FaComments aria-hidden="true" />
       </button>
@@ -172,7 +200,7 @@ function ResumeChatWidget() {
               className="resume-chat-widget__close"
               type="button"
               aria-label="Close chat"
-              onClick={() => setIsOpen(false)}
+              onClick={closePanel}
             >
               ×
             </button>
@@ -182,63 +210,18 @@ function ResumeChatWidget() {
               {messages.map((message, index) => (
                 <div
                   className={`resume-chat-widget__message resume-chat-widget__message--${message.role}`}
-                  key={`${message.role}-${index}`}
+                  key={`${message.role}-${index}-${message.meta || 'message'}`}
                 >
                   {message.text}
                 </div>
               ))}
               <div ref={messagesEndRef} />
             </div>
-            <div className="resume-chat-widget__suggestions">
-              <div className="resume-chat-widget__suggestions-header">
-                <span>Suggested Questions</span>
-                {activeCategoryId ? (
-                  <button
-                    className="resume-chat-widget__menu-button"
-                    type="button"
-                    onClick={() => setActiveCategoryId(null)}
-                  >
-                    Main menu
-                  </button>
-                ) : null}
-              </div>
-              {activeCategoryId ? (
-                <div className="resume-chat-widget__question-list">
-                  {questionCategories
-                    .find((category) => category.id === activeCategoryId)
-                    ?.questions.map((question) => (
-                      <button
-                        className="resume-chat-widget__chip"
-                        type="button"
-                        key={question}
-                        onClick={() => handleAsk(question)}
-                      >
-                        {question}
-                      </button>
-                    ))}
-                </div>
-              ) : (
-                <>
-                  <div className="resume-chat-widget__category-list">
-                    {questionCategories.map((category) => (
-                      <button
-                        className="resume-chat-widget__category"
-                        type="button"
-                        key={category.id}
-                        onClick={() => setActiveCategoryId(category.id)}
-                      >
-                        {category.title}
-                      </button>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
             <div className="resume-chat-widget__input-row">
               <input
                 className="resume-chat-widget__input"
                 type="text"
-                placeholder="Ask about skills, projects, education..."
+                placeholder="Ask about projects, backend systems, or AI work..."
                 value={inputValue}
                 onChange={(event) => setInputValue(event.target.value)}
                 onKeyDown={(event) => {

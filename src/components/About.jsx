@@ -57,8 +57,12 @@ const About = () => {
                 <h4 className="text-xl font-semibold text-text-primary">{edu.institution}</h4>
               </div>
               <p className="text-text-secondary font-medium">{edu.degree}</p>
-              <p className="text-sm text-text-secondary font-mono">{edu.duration}</p>
-              <p className="text-sm text-accent-1 font-mono mt-1">{edu.score}</p>
+              {edu.duration ? (
+                <p className="text-sm text-text-secondary font-mono">{edu.duration}</p>
+              ) : null}
+              {edu.score ? (
+                <p className="text-sm text-accent-1 font-mono mt-1">{edu.score}</p>
+              ) : null}
             </Motion.div>
           ))}
         </div>

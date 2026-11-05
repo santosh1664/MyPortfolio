@@ -2,8 +2,8 @@ import React from 'react';
 import SectionTitle from './SectionTitle.jsx';
 import { skills } from '../data/portfolioData.jsx';
 import { motion as Motion } from 'framer-motion';
-import { FaReact, FaNodeJs, FaDatabase, FaCode, FaHtml5, FaCss3Alt, FaWordpress, FaPython, FaJava, FaCloud, FaProjectDiagram, FaAws, FaDocker, FaGitAlt, FaLinux, FaWindows, FaLightbulb, FaSitemap, FaPlug, FaUsers, FaRunning, FaComments, FaChalkboardTeacher, FaEye, FaLanguage, FaCogs, FaStream } from 'react-icons/fa';
-import { SiExpress, SiMongodb, SiFirebase, SiTailwindcss, SiJavascript, SiCplusplus, SiTypescript, SiGo, SiMysql, SiPostgresql, SiAmazondynamodb, SiSpringboot, SiNextdotjs, SiFlask, SiDjango, SiGooglecloud, SiKubernetes, SiGithubactions, SiJenkins, SiTerraform, SiGnubash, SiJira, SiPostman, SiVscodium, SiIntellijidea, SiTensorflow, SiPytorch, SiScikitlearn, SiPandas, SiNumpy, SiApachekafka, SiApachespark } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaDatabase, FaCode, FaHtml5, FaCss3Alt, FaWordpress, FaPython, FaJava, FaCloud, FaProjectDiagram, FaAws, FaDocker, FaGitAlt, FaLinux, FaWindows, FaLightbulb, FaSitemap, FaPlug, FaUsers, FaRunning, FaComments, FaChalkboardTeacher, FaEye, FaLanguage, FaCogs, FaStream, FaExchangeAlt, FaLock, FaRobot, FaBrain, FaAngular, FaBootstrap } from 'react-icons/fa';
+import { SiExpress, SiMongodb, SiFirebase, SiTailwindcss, SiJavascript, SiCplusplus, SiTypescript, SiGo, SiMysql, SiPostgresql, SiAmazondynamodb, SiSpringboot, SiNextdotjs, SiFlask, SiDjango, SiGooglecloud, SiKubernetes, SiGithubactions, SiJenkins, SiTerraform, SiGnubash, SiJira, SiPostman, SiVscodium, SiIntellijidea, SiTensorflow, SiPytorch, SiScikitlearn, SiPandas, SiNumpy, SiApachekafka, SiApachespark, SiJquery, SiSharp } from 'react-icons/si';
 
 // Map icon names to components
 const iconMap = {
@@ -33,6 +33,12 @@ const iconMap = {
   FaLanguage,
   FaCogs,
   FaStream,
+  FaExchangeAlt,
+  FaLock,
+  FaRobot,
+  FaBrain,
+  FaAngular,
+  FaBootstrap,
   FaHtml5,
   FaCss3Alt,
   FaWordpress,
@@ -67,6 +73,9 @@ const iconMap = {
   SiNumpy,
   SiApachekafka,
   SiApachespark,
+  SiJquery,
+  SiSharp,
+  SiCsharp: SiSharp,
 };
 
 const getIcon = (iconName) => {

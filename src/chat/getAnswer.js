@@ -1,4 +1,5 @@
 import { resumeProfile } from "./resumeData";
+import { getApiBaseUrl } from "./apiBaseUrl";
 
 /* ---------- Local fallback ---------- */
 function localAnswer(question) {
@@ -49,7 +50,7 @@ function localAnswer(question) {
 
 /* ---------- Backend + fallback ---------- */
 export async function getAnswer(question) {
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+  const API_BASE_URL = getApiBaseUrl();
 
   try {
     const response = await fetch(`${API_BASE_URL}/api/chat`, {

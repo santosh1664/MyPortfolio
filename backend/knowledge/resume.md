@@ -7,9 +7,10 @@ Email: gaddamsantosh03@gmail.com
 LinkedIn: https://www.linkedin.com/in/durgasantosh-g/
 GitHub: https://github.com/santosh1664
 Portfolio: https://www.santoshroy.info
+Phone: +1 234-567-9535
 
 Summary:
-I'm a Software Engineer with 3+ years of experience across the full software development lifecycle (SDLC), including frontend development, backend engineering, testing, deployment, and production support for enterprise-scale web applications. Strong experience building responsive UIs using React.js and Angular, and developing scalable backend services with Java, Spring Boot, and microservices. Proven ability to design and integrate RESTful APIs, optimize performance, and deploy cloud-native applications on AWS using CI/CD pipelines, Docker, and Kubernetes.
+I'm a Software Engineer with 3+ years of experience building responsive and high-performance web applications using React.js and Spring Boot. I focus on reusable UI components, asynchronous data flows, secure RESTful APIs, and microservices-based architectures. I also have experience improving frontend performance, resolving production issues, shipping AWS-based CI/CD workflows, and building an AI-powered resume chatbot using Retrieval-Augmented Generation (RAG) with a React frontend and FastAPI backend.
 
 Education:
 - Master of Science in Computer Science, University of North Texas (Aug 2023 - May 2025)

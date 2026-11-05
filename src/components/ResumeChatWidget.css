@@ -4,13 +4,35 @@
   bottom: 24px;
   z-index: 1000;
   display: flex;
+  flex-direction: column;
   align-items: flex-end;
-  justify-content: flex-end;
+  gap: 12px;
   pointer-events: none;
 }
 
-.resume-chat-widget__toggle {
+.resume-chat-widget__teaser,
+.resume-chat-widget__toggle,
+.resume-chat-widget__panel {
   pointer-events: auto;
+}
+
+.resume-chat-widget__teaser {
+  max-width: min(320px, calc(100vw - 48px));
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #0f172a;
+  padding: 12px 14px;
+  text-align: left;
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.16);
+  cursor: pointer;
+  animation: recruiter-teaser-in 260ms ease-out;
+}
+
+.resume-chat-widget__toggle {
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -27,7 +49,6 @@
 }
 
 .resume-chat-widget__panel {
-  pointer-events: auto;
   position: absolute;
   right: 0;
   bottom: 72px;
@@ -78,77 +99,10 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  min-height: 220px;
   max-height: 220px;
   overflow-y: auto;
   padding-right: 4px;
-  align-items: center;
-  text-align: center;
-}
-
-.resume-chat-widget__suggestions {
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid #e2e8f0;
-  text-align: center;
-}
-
-.resume-chat-widget__suggestions-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
-
-.resume-chat-widget__menu {
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid #e2e8f0;
-}
-
-.resume-chat-widget__menu-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  font-weight: 600;
-}
-
-.resume-chat-widget__menu-button {
-  border: none;
-  background: transparent;
-  color: #1d4ed8;
-  cursor: pointer;
-  font-size: 12px;
-  padding: 0;
-}
-
-.resume-chat-widget__category-list,
-.resume-chat-widget__question-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-}
-
-.resume-chat-widget__category,
-.resume-chat-widget__chip {
-  border: 1px solid #e2e8f0;
-  border-radius: 999px;
-  background: #f8fafc;
-  color: #0f172a;
-  padding: 6px 10px;
-  font-size: 12px;
-  cursor: pointer;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.resume-chat-widget__category:hover,
-.resume-chat-widget__chip:hover {
-  border-color: #1d4ed8;
-  box-shadow: 0 6px 16px rgba(29, 78, 216, 0.18);
-  transform: translateY(-1px);
 }
 
 .resume-chat-widget__message {
@@ -161,7 +115,7 @@
 }
 
 .resume-chat-widget__message--user {
-  align-self: center;
+  align-self: flex-end;
   background: #1d4ed8;
   color: #ffffff;
 }
@@ -188,6 +142,18 @@
   padding: 10px 14px;
   cursor: pointer;
   font-size: 13px;
+}
+
+@keyframes recruiter-teaser-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 640px) {
