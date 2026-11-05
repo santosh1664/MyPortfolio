@@ -2,6 +2,7 @@ import React from 'react';
 import { FaGithub, FaAward } from 'react-icons/fa6';
 import Reveal from './Reveal.jsx';
 import SectionTitle from './SectionTitle.jsx';
+import RejektArchitecture from '../widgets/RejektArchitecture.jsx';
 import { projects } from '../data/portfolioData.jsx';
 
 const Links = ({ p, light }) => {
@@ -58,6 +59,10 @@ const Projects = () => {
           <CaseStudy p={a} i={0} />
           <CaseStudy p={b} i={1} />
         </div>
+
+        <Reveal className="mt-5">
+          <RejektArchitecture />
+        </Reveal>
 
         <Reveal className="mt-14">
           <div className="label mb-3">archive/</div>

@@ -5,6 +5,7 @@ import { personalInfo } from '../data/portfolioData.jsx';
 import { askSantosh } from '../assistant/events.js';
 
 const navItems = [
+  { name: 'Hiring?', to: 'hiring' },
   { name: 'About', to: 'about' },
   { name: 'Stack', to: 'skills' },
   { name: 'Work', to: 'projects' },

@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Hiring from './components/Hiring.jsx';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
@@ -17,6 +18,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <Hiring />
         <About />
         <Skills />
         <Projects />
