@@ -70,3 +70,12 @@ Output is in `dist/`.
 
 ## Assets
 - Resume: place your PDF in `public/` and update `personalInfo.resumeLink` in `src/data/portfolioData.jsx`.
+
+## Ask-about-me assistant
+
+The floating **"Ask about Santosh"** assistant (also opened from the hero bar or with ⌘K / Ctrl+K) runs fully in the browser, with no API key or backend:
+
+- `src/assistant/engine.js` answers from `src/data/portfolioData.jsx` (intent routing + evidence search over every résumé bullet), so it never invents experience.
+- **Job fit check:** paste a job description to get a match score, matched skills, honest gaps, the years-of-experience comparison, and the most relevant résumé evidence.
+- The copy button in the header copies a plain-text recruiter summary.
+- Location, availability, work-authorization and compensation answers live in `facts` at the top of `engine.js`; edit them there.

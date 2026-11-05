@@ -3,6 +3,7 @@ import { motion as Motion, useScroll, useTransform, useReducedMotion } from 'fra
 import { Link as ScrollLink } from 'react-scroll';
 import { FaArrowRight, FaDownload, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { personalInfo, socialLinks } from '../data/portfolioData.jsx';
+import { askSantosh } from '../assistant/events.js';
 
 const icons = { FaGithub, FaLinkedin, FaEnvelope };
 
@@ -26,6 +27,32 @@ const Portrait = () => {
         <span className="absolute bottom-6 right-0 h-5 w-5 rounded-full bg-accent shadow-[0_0_40px_10px_rgba(255,45,85,0.45)]" />
       </div>
     </div>
+  );
+};
+
+const AskBar = () => {
+  const [q, setQ] = useState('');
+  const chips = ['What is he working on now?', 'Does he know Kubernetes?', 'Is he available?'];
+  return (
+    <Motion.div {...fade(0.65)} className="mt-10 max-w-xl">
+      <form onSubmit={(e) => { e.preventDefault(); askSantosh(q || 'Give me a 30-second intro'); setQ(''); }}
+            className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-2 pl-4 backdrop-blur transition focus-within:border-accent/70 hover:border-white/20">
+        <span className="relative flex h-2.5 w-2.5 shrink-0">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+          <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent" />
+        </span>
+        <input value={q} onChange={(e) => setQ(e.target.value)} aria-label="Ask my AI assistant"
+               placeholder="Ask my AI assistant anything about me…"
+               className="min-w-0 flex-1 bg-transparent py-2 text-[14px] text-bone placeholder:text-mute focus:outline-none" />
+        <button type="submit" className="rounded-xl bg-accent px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-white">Ask</button>
+      </form>
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        {chips.map((c) => (
+          <button key={c} onClick={() => askSantosh(c)} className="rounded-full border border-white/10 px-3 py-1 text-[12px] text-mute transition hover:border-accent hover:text-bone">{c}</button>
+        ))}
+        <button onClick={() => askSantosh('', 'fit')} className="rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-[12px] text-bone transition hover:bg-accent/20">Recruiter? Check job fit →</button>
+      </div>
+    </Motion.div>
   );
 };
 
@@ -81,6 +108,7 @@ const Hero = () => {
                 })}
               </div>
             </Motion.div>
+            <AskBar />
           </div>
 
           <Motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.3 }}

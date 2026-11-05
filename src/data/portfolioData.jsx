@@ -252,25 +252,25 @@ export const projects = [
 export const skills = {
   languages: [
     { name: "Java 17" }, { name: "Python" }, { name: "TypeScript" }, { name: "JavaScript" }, { name: "SQL" },
-    { name: "Go" }, { name: "C++" }, { name: "HTML5 / CSS3" },
+    { name: "Go" }, { name: "C++" }, { name: "C# / .NET" }, { name: "HTML5 / CSS3" },
   ],
   aiAndDataEngineering: [
     { name: "Generative AI" }, { name: "LLMs" }, { name: "AI Agents" }, { name: "RAG" }, { name: "LangChain" }, { name: "LangGraph" },
     { name: "Google ADK" }, { name: "Model Context Protocol (MCP)" }, { name: "OpenAI API" }, { name: "Google Gemini" },
     { name: "Prompt & Context Engineering" }, { name: "LLM Evaluation" }, { name: "Vector Embeddings" }, { name: "SentenceTransformers" },
     { name: "Model Fine-tuning" }, { name: "PyTorch" }, { name: "TensorFlow" }, { name: "spaCy" }, { name: "Tesseract OCR" },
-    { name: "Whisper" }, { name: "Pandas" }, { name: "NumPy" }, { name: "ETL / Data Pipelines" },
+    { name: "Whisper" }, { name: "Pandas" }, { name: "NumPy" }, { name: "Apache Spark / PySpark" }, { name: "ETL / Data Pipelines" },
   ],
   frameworksAndLibraries: [
     { name: "Spring Boot" }, { name: "Spring Security" }, { name: "Spring MVC" }, { name: "Spring Data JPA / Hibernate" }, { name: "FastAPI" },
-    { name: "Node.js / Express" }, { name: "React.js" }, { name: "Angular" }, { name: "Redux" }, { name: "Kafka" },
+    { name: "Node.js / Express" }, { name: "React.js" }, { name: "Next.js" }, { name: "Angular" }, { name: "Redux" }, { name: "GraphQL" }, { name: "Kafka" }, { name: "RabbitMQ" },
     { name: "Microservices" }, { name: "RESTful APIs" }, { name: "JWT" },
   ],
   databases: [
     { name: "PostgreSQL" }, { name: "MySQL" }, { name: "DynamoDB" }, { name: "Redis" }, { name: "ChromaDB" }, { name: "MongoDB" },
   ],
   toolsAndPlatforms: [
-    { name: "AWS (ECS Fargate, EC2, S3, RDS, SQS, CloudWatch)" }, { name: "Docker" }, { name: "Kubernetes" }, { name: "Jenkins" },
+    { name: "AWS (ECS Fargate, EC2, S3, RDS, SQS, CloudWatch)" }, { name: "Azure" }, { name: "GCP" }, { name: "Docker" }, { name: "Kubernetes" }, { name: "Jenkins" },
     { name: "GitLab CI" }, { name: "GitHub Actions" }, { name: "Maven" }, { name: "Terraform" }, { name: "JUnit" }, { name: "Mockito" },
     { name: "pytest" }, { name: "Postman" }, { name: "Git" }, { name: "Jira" }, { name: "Linux" },
   ],
