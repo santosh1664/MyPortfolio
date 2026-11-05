@@ -311,34 +311,6 @@ export const socialLinks = {
   email: { url: `mailto:${personalInfo.email}`, iconName: "FaEnvelope" },
 };
 
-// Role-specific pitches (from Santosh's tailored résumé versions) for the "Hiring for…" widget.
-export const roleVariants = [
-  {
-    id: 'ai', label: 'AI Engineer',
-    pitch: "Software Engineer with 3+ years in Java and Python, currently building AI agent workflows with Google ADK for Java on Citigroup's financial platforms (8 microservices, 500+ internal users). Built and runs rejekt.ai, a live Generative AI interview platform using RAG, LangGraph, OpenAI/Gemini, and real-time Whisper voice.",
-    core: ['Python', 'LLMs', 'AI agents', 'RAG', 'LangGraph', 'LangChain', 'MCP', 'ChromaDB / vector DBs', 'Prompt engineering', 'PyTorch', 'FastAPI', 'AWS'],
-    proof: ['Google ADK', 'End-to-end RAG', 'Real-time voice'],
-  },
-  {
-    id: 'java', label: 'Java Backend',
-    pitch: 'Software Engineer with 3+ years of Java backend work in financial services, currently building Spring Boot microservices, secure REST APIs, and Kafka event pipelines on Citigroup platforms serving 500+ internal users. Comfortable across the delivery cycle, from JPA data layers and JUnit/Mockito testing to Docker, Kubernetes, and Jenkins releases.',
-    core: ['Java', 'Spring Boot', 'Spring Security', 'Hibernate / JPA', 'Microservices', 'REST APIs', 'Kafka', 'JUnit / Mockito', 'PostgreSQL', 'Docker', 'Kubernetes', 'Jenkins'],
-    proof: ['15 secure REST endpoints', 'Kafka producers', 'RESTful APIs with request validation'],
-  },
-  {
-    id: 'fullstack', label: 'Full-Stack',
-    pitch: 'Full-stack Software Engineer with 3+ years shipping features across React.js/Angular frontends and Java/Spring Boot backends, currently on Citigroup financial platforms used by 500+ internal users. Also built and runs rejekt.ai, a live AI interview platform on Python, FastAPI, and AWS.',
-    core: ['React', 'TypeScript', 'Angular', 'Redux', 'Node.js', 'Java', 'Spring Boot', 'REST APIs', 'PostgreSQL', 'AWS', 'Docker', 'CI/CD'],
-    proof: ['end-to-end financial workflows in React.js', 'page-load time from 3.2s', 'reusable frontend components'],
-  },
-  {
-    id: 'python', label: 'Python',
-    pitch: 'Software Engineer with 3+ years building production systems in Python and Java; built and runs rejekt.ai, a live Python/FastAPI platform with RAG pipelines, Whisper voice, and a data pipeline that has processed 2M+ job listings. At Citigroup, works on event-driven services and AI agent workflows handling 50K+ daily requests.',
-    core: ['Python', 'FastAPI', 'pytest', 'Data pipelines / ETL', 'PostgreSQL', 'Redis', 'LangChain', 'Machine learning', 'NLP / OCR', 'AWS', 'Docker', 'GitHub Actions'],
-    proof: ['Ingestion pipelines across 19', 'FastAPI services', 'Python log-analysis scripts'],
-  },
-];
-
 // Before → after results for the impact.diff widget.
 export const impactDiff = [
   { metric: 'code_to_production', before: '2 days', after: '6 hours', gain: 88, where: 'Citigroup · CI/CD automation' },
