@@ -314,8 +314,23 @@ const ROUTES = [
   ['testing', ['test', 'quality', 'junit', 'pytest']],
   ['projects', ['project', 'built', 'portfolio', 'side project', 'github']],
   ['skills', ['skill', 'stack', 'tech', 'technolog', 'tools', 'languages', 'know']],
-  ['intro', ['who is', 'about him', 'about you', 'tell me about', 'introduce', 'summary', 'summar', 'overview', 'background', 'profile', 'elevator', 'intro']],
+  ['intro', ['who is he', 'who is santosh', 'who is durga', 'about him', 'about you', 'tell me about', 'introduce', 'summary', 'summar', 'overview', 'background', 'profile', 'elevator', 'intro']],
 ];
+
+// Questions that are not about Santosh get redirected instead of answered.
+const ABOUT_HIM = /\b(he|his|him|he's|santosh|durga|durgasantosh|candidate|you|your|you're)\b/;
+const OFF_TOPIC = [
+  /\bweather\b/, /\bjoke\b/, /\bpoem\b/, /\bstory\b/, /\brecipe\b/, /\bnews\b/, /\bpresident\b/, /\bprime minister\b/,
+  /\bcapital of\b/, /\btranslate\b/, /\bcalculate\b/, /\bsolve\b/, /^\s*what is \d/, /\d+\s*[-+*/x]\s*\d+/, /\bstock price\b/, /\bbitcoin|crypto\b/,
+  /\bmovie|song|lyrics|game score|football|cricket|nba|nfl\b/, /\bwhat time\b/, /\bwhat day\b/,
+  /\b(write|generate|create|make|give)\b.*\b(code|program|script|function|essay|email|letter|poem|story|query|sql)\b/,
+  /\bhow (do|to|can) (i|you|we)\b(?!.*\b(contact|reach|hire|email)\b)/, /\bexplain (what|how)\b/, /\bwhat is (a|an|the)\b/, /\bdefine\b/, /\bdifference between\b/,
+  /\b(chatgpt|openai's ceo|elon|weather)\b/,
+];
+export const redirect = () => ({
+  text: `I'm only here to talk about **${ME}** — so I can't help with that one.\n\nAsk me about ${ME} instead: his experience, AI projects, skills, availability, or paste a job description to see how well he fits.`,
+  follow: ['Give me a 30-second intro', 'What AI work has he done?', 'Check fit for a job'],
+});
 
 const SKILL_Q = /\b(does|do|has|have|can|is|know|knows|familiar|experience|experienced|worked|used|use|proficient)\b/;
 
@@ -363,6 +378,7 @@ export const answer = (raw) => {
   if (!input) return answers.greet();
   if (looksLikeJD(input)) return fitCheck(input);
   const q = ` ${norm(input)} `;
+  if (!ABOUT_HIM.test(q) && OFF_TOPIC.some((re) => re.test(q))) return redirect();
 
   const found = findSkills(input);
   const routed = ROUTES.find(([, pats]) => pats.some((p) => (p instanceof RegExp ? p.test(q.trim()) : q.includes(p))));
@@ -374,11 +390,12 @@ export const answer = (raw) => {
   if (found.length) return skillCheck(input, found);
 
   const ev = search(input, 3);
-  if (ev.length) {
+  if (ev.length && ABOUT_HIM.test(q)) {
     return { text: `Here's what I found in ${ME}'s record:\n\n${evidence(ev)}`, follow: ['Give me a 30-second intro', 'Skills overview'] };
   }
+  if (!ABOUT_HIM.test(q)) return redirect();
   return {
-    text: `I don't have that in ${ME}'s portfolio, and I'd rather not guess. Try asking about his experience, projects, skills, or availability — or email him at ${EMAIL}.`,
+    text: `I don't have that detail in ${ME}'s portfolio, and I'd rather not guess. Ask me about ${ME}'s experience, projects, skills, or availability — or email him directly at ${EMAIL}.`,
     follow: ['Give me a 30-second intro', 'What AI work has he done?', 'How do I contact him?'],
   };
 };
