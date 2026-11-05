@@ -4,16 +4,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        paper: '#F3F0E8',
-        paper2: '#E9E5DA',
-        card: '#FBFAF6',
-        ink: '#111111',
-        mute: '#5F5E5A',
-        line: 'rgba(17,17,17,0.12)',
-        blue: '#2B44FF',
-        blueSoft: '#E3E7FF',
-        mint: '#0F9D63',
-        accent: '#2B44FF',
+        paper: '#07080B',
+        paper2: '#0C0E13',
+        card: '#111319',
+        ink: '#F1F3F8',
+        mute: '#9097A8',
+        line: 'rgba(255,255,255,0.09)',
+        blue: '#4C6BFF',
+        blueSoft: '#AFC0FF',
+        mint: '#2BD98A',
+        accent: '#4C6BFF',
       },
       fontFamily: {
         display: ['"Bricolage Grotesque"', 'ui-sans-serif', 'system-ui', 'sans-serif'],

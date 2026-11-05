@@ -12,7 +12,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <Reveal className="relative overflow-hidden rounded-[2rem] bg-blue p-8 text-white sm:p-14">
+        <Reveal className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#5B78FF] via-blue to-[#2A3FD6] p-8 text-white sm:p-14">
           <svg className="pointer-events-none absolute -right-10 -top-10 h-[420px] w-[420px] opacity-25" viewBox="0 0 200 200" aria-hidden>
             {[[30, 40], [150, 30], [100, 110], [40, 160], [170, 150]].map(([x, y], i) => <circle key={i} cx={x} cy={y} r="7" fill="white" />)}
             <path d="M30 40 L150 30 L100 110 L40 160 M100 110 L170 150" stroke="white" strokeWidth="1.5" fill="none" strokeDasharray="4 5" />
@@ -24,7 +24,7 @@ const Contact = () => {
               Open to Software Engineer roles across AI, backend and full-stack. Based in Dallas, open to relocation, on-site, hybrid or remote.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
-              <a href={`mailto:${personalInfo.email}`} className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:bg-ink hover:text-white">
+              <a href={`mailto:${personalInfo.email}`} className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-black hover:text-white">
                 <FaEnvelope /> {personalInfo.email}
               </a>
               <button onClick={copy} className="rounded-full border border-white/30 px-5 py-3 text-sm transition hover:bg-white/10">{copied ? 'Copied ✓' : 'Copy email'}</button>

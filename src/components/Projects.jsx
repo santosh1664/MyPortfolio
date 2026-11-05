@@ -5,7 +5,7 @@ import SectionTitle from './SectionTitle.jsx';
 import { projects } from '../data/portfolioData.jsx';
 
 const Links = ({ p, light }) => {
-  const cls = `inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[13px] transition ${light ? 'border-white/25 text-white hover:bg-white hover:text-ink' : 'border-ink/15 hover:border-ink hover:bg-ink hover:text-paper'}`;
+  const cls = `inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[13px] transition ${light ? 'border-blue/40 text-ink hover:bg-blue hover:text-white' : 'border-ink/15 hover:border-ink hover:bg-ink hover:text-paper'}`;
   return (
     <div className="flex flex-wrap gap-2">
       {p.liveLink && <a className={cls} href={p.liveLink} target="_blank" rel="noopener noreferrer">Live <span aria-hidden>↗</span></a>}
@@ -19,18 +19,18 @@ const Links = ({ p, light }) => {
 const CaseStudy = ({ p, i }) => {
   const dark = i === 0;
   return (
-    <Reveal delay={i * 0.08} className={`flex flex-col rounded-3xl border p-7 sm:p-9 ${dark ? 'border-ink bg-ink text-paper' : 'border-line bg-card'}`}>
+    <Reveal delay={i * 0.08} className={`flex flex-col rounded-3xl border p-7 sm:p-9 ${dark ? 'border-blue/40 bg-card bg-[radial-gradient(120%_80%_at_0%_0%,rgba(76,107,255,0.28),transparent_60%)] shadow-[0_30px_80px_-40px_rgba(76,107,255,0.7)]' : 'border-line bg-card'}`}>
       <div className="flex items-center justify-between">
-        <span className={`font-mono text-[12px] ${dark ? 'text-blueSoft/80' : 'text-blue'}`}>case_{String(i + 1).padStart(2, '0')}</span>
-        <span className={`font-mono text-[11px] uppercase tracking-[0.14em] ${dark ? 'text-paper/50' : 'text-mute'}`}>{p.date}</span>
+        <span className={`font-mono text-[12px] ${dark ? 'text-blueSoft' : 'text-blue'}`}>case_{String(i + 1).padStart(2, '0')}</span>
+        <span className={`font-mono text-[11px] uppercase tracking-[0.14em] ${dark ? 'text-ink/50' : 'text-mute'}`}>{p.date}</span>
       </div>
       <h3 className="mt-5 font-display text-[28px] font-extrabold leading-[1.05] tracking-tight sm:text-[34px]">{p.title.split('—')[0].trim()}</h3>
-      <div className={`mt-1 text-[15px] ${dark ? 'text-paper/60' : 'text-mute'}`}>{(p.title.split('—')[1] || p.category).trim()}</div>
-      <p className={`mt-5 text-[15px] leading-relaxed ${dark ? 'text-paper/80' : 'text-ink/75'}`}>{p.description}</p>
+      <div className={`mt-1 text-[15px] ${dark ? 'text-ink/60' : 'text-mute'}`}>{(p.title.split('—')[1] || p.category).trim()}</div>
+      <p className={`mt-5 text-[15px] leading-relaxed ${dark ? 'text-ink/80' : 'text-ink/75'}`}>{p.description}</p>
       {p.highlights && (
         <ul className="mt-5 space-y-2.5">
           {p.highlights.map((h) => (
-            <li key={h} className={`flex gap-3 text-[14px] leading-relaxed ${dark ? 'text-paper/75' : 'text-ink/70'}`}>
+            <li key={h} className={`flex gap-3 text-[14px] leading-relaxed ${dark ? 'text-ink/75' : 'text-ink/70'}`}>
               <span className={`mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full ${dark ? 'bg-blueSoft' : 'bg-blue'}`} />{h}
             </li>
           ))}
@@ -38,7 +38,7 @@ const CaseStudy = ({ p, i }) => {
       )}
       <div className="mt-6 flex flex-wrap gap-1.5">
         {p.tech.slice(0, 12).map((t) => (
-          <span key={t} className={`rounded-md px-2 py-0.5 font-mono text-[11px] ${dark ? 'bg-white/10 text-paper/80' : 'bg-paper text-ink/75'}`}>{t}</span>
+          <span key={t} className={`rounded-md px-2 py-0.5 font-mono text-[11px] ${dark ? 'bg-blue/15 text-ink/85' : 'bg-paper text-ink/75'}`}>{t}</span>
         ))}
       </div>
       <div className="mt-auto pt-7"><Links p={p} light={dark} /></div>

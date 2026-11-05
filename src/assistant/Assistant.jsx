@@ -57,8 +57,8 @@ const ScoreRing = ({ score }) => {
   return (
     <div className="relative mb-2 flex items-center gap-3">
       <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden>
-        <circle cx="32" cy="32" r={r} stroke="rgba(17,17,17,0.1)" strokeWidth="6" fill="none" />
-        <circle cx="32" cy="32" r={r} stroke="#2B44FF" strokeWidth="6" fill="none" strokeLinecap="round"
+        <circle cx="32" cy="32" r={r} stroke="rgba(255,255,255,0.1)" strokeWidth="6" fill="none" />
+        <circle cx="32" cy="32" r={r} stroke="#4C6BFF" strokeWidth="6" fill="none" strokeLinecap="round"
                 strokeDasharray={c} strokeDashoffset={c - (c * score) / 100} transform="rotate(-90 32 32)" style={{ transition: 'stroke-dashoffset 1s ease' }} />
       </svg>
       <div className="absolute left-0 top-0 flex h-16 w-16 items-center justify-center font-display text-lg font-bold text-ink">{score}%</div>
@@ -168,7 +168,7 @@ const Assistant = () => {
           <Motion.button
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}
             onClick={() => setOpen(true)}
-            className="group fixed bottom-5 right-5 z-[60] flex items-center gap-3 rounded-full border border-ink/15 bg-card/95 py-2 pl-2 pr-5 shadow-[0_20px_50px_-18px_rgba(43,68,255,0.55)] backdrop-blur-md transition hover:border-accent"
+            className="group fixed bottom-5 right-5 z-[60] flex items-center gap-3 rounded-full border border-ink/15 bg-card/95 py-2 pl-2 pr-5 shadow-[0_20px_50px_-18px_rgba(76,107,255,0.55)] backdrop-blur-md transition hover:border-accent"
             aria-label={`Open ${ME}'s assistant`}>
             <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-accent font-display text-sm font-bold text-white">
               DG<span className="absolute -right-0.5 -top-0.5 h-3 w-3 rounded-full border-2 border-card bg-mint" />
@@ -188,7 +188,7 @@ const Assistant = () => {
             role="dialog" aria-label={`${ME}'s assistant`}
             initial={{ opacity: 0, y: 30, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 30, scale: 0.97 }}
             transition={{ type: 'spring', stiffness: 260, damping: 26 }}
-            className="fixed inset-x-3 bottom-3 top-16 z-[60] flex flex-col overflow-hidden rounded-3xl border border-ink/10 bg-card/95 shadow-[0_40px_120px_-30px_rgba(17,17,17,0.45)] backdrop-blur-xl sm:inset-x-auto sm:right-5 sm:top-auto sm:bottom-5 sm:h-[min(680px,calc(100vh-40px))] sm:w-[420px]">
+            className="fixed inset-x-3 bottom-3 top-16 z-[60] flex flex-col overflow-hidden rounded-3xl border border-ink/10 bg-card/95 shadow-[0_40px_120px_-20px_rgba(0,0,0,0.95)] backdrop-blur-xl sm:inset-x-auto sm:right-5 sm:top-auto sm:bottom-5 sm:h-[min(680px,calc(100vh-40px))] sm:w-[420px]">
             {/* header */}
             <header className="relative border-b border-ink/10 px-5 pb-3 pt-4">
               <div className="pointer-events-none absolute -right-10 -top-16 h-40 w-40 rounded-full bg-blue/15 blur-3xl" />
@@ -209,7 +209,7 @@ const Assistant = () => {
               <div className="relative mt-3 grid grid-cols-2 gap-1 rounded-full border border-ink/10 bg-ink/[0.03] p-1">
                 {[['chat', 'Chat', FaComments], ['fit', 'Job fit check', FaBriefcase]].map(([k, label, I]) => (
                   <button key={k} onClick={() => setMode(k)}
-                          className={`flex items-center justify-center gap-2 rounded-full py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] transition ${mode === k ? 'bg-ink text-paper' : 'text-mute hover:text-ink'}`}>
+                          className={`flex items-center justify-center gap-2 rounded-full py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] transition ${mode === k ? 'bg-blue text-white' : 'text-mute hover:text-ink'}`}>
                     {React.createElement(I, { size: 11 })} {label}
                   </button>
                 ))}
@@ -222,7 +222,7 @@ const Assistant = () => {
                 <div ref={listRef} className="relative flex-1 space-y-4 overflow-y-auto px-4 py-4 [scrollbar-width:thin]" aria-live="polite">
                   {msgs.map((m) => (m.role === 'user' ? (
                     <div key={m.id} className="flex justify-end">
-                      <div className="max-w-[85%] rounded-2xl rounded-br-md bg-ink px-4 py-2.5 text-[13.5px] leading-relaxed text-paper">{m.text}</div>
+                      <div className="max-w-[85%] rounded-2xl rounded-br-md bg-blue px-4 py-2.5 text-[13.5px] leading-relaxed text-white">{m.text}</div>
                     </div>
                   ) : (
                     <div key={m.id} data-bot className="flex gap-2.5">
@@ -276,7 +276,7 @@ const Assistant = () => {
                           placeholder="Paste the job description here…"
                           className="mt-4 flex-1 resize-none rounded-2xl border border-ink/10 bg-ink/[0.03] p-4 text-[13px] leading-relaxed text-ink placeholder:text-mute focus:border-accent/60 focus:outline-none" />
                 <button onClick={runFit} disabled={jd.trim().length < 40 || busy}
-                        className="mt-3 flex items-center justify-center gap-2 rounded-full bg-ink py-3 font-mono text-xs uppercase tracking-[0.18em] text-paper transition hover:bg-blue disabled:opacity-30">
+                        className="mt-3 flex items-center justify-center gap-2 rounded-full bg-blue py-3 font-mono text-xs uppercase tracking-[0.18em] text-white transition hover:bg-white hover:text-black disabled:opacity-30">
                   <FaBriefcase /> Check fit
                 </button>
               </div>

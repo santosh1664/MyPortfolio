@@ -7,26 +7,27 @@
   body {
     @apply bg-paper text-ink font-sans antialiased;
     /* subtle dotted "graph paper" */
-    background-image: radial-gradient(rgba(17,17,17,0.09) 1px, transparent 1px);
-    background-size: 22px 22px;
+    background-image: radial-gradient(rgba(255,255,255,0.055) 1px, transparent 1px), radial-gradient(900px 520px at 85% -5%, rgba(76,107,255,0.20), transparent 60%), radial-gradient(700px 500px at -5% 45%, rgba(76,107,255,0.08), transparent 60%);
+    background-size: 22px 22px, 100% 100%, 100% 100%;
+    background-attachment: scroll, fixed, fixed;
   }
   ::selection { @apply bg-blue text-white; }
-  :focus-visible { outline: 2px solid #2B44FF; outline-offset: 3px; border-radius: 6px; }
+  :focus-visible { outline: 2px solid #4C6BFF; outline-offset: 3px; border-radius: 6px; }
 }
 
 @layer components {
   .label { @apply font-mono text-[11px] uppercase tracking-[0.16em] text-mute; }
   .chip { @apply inline-flex items-center rounded-md border border-line bg-card px-2.5 py-1 font-mono text-[11.5px] text-ink/80; }
-  .btn-ink { @apply inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition hover:bg-blue; }
+  .btn-ink { @apply inline-flex items-center gap-2 rounded-full bg-blue px-6 py-3 text-sm font-medium text-white shadow-[0_10px_30px_-10px_rgba(76,107,255,0.8)] transition hover:bg-white hover:text-black; }
   .btn-line { @apply inline-flex items-center gap-2 rounded-full border border-ink/25 px-6 py-3 text-sm font-medium text-ink transition hover:border-ink hover:bg-ink hover:text-paper; }
-  .panel { @apply rounded-2xl border border-line bg-card shadow-[0_1px_0_rgba(17,17,17,0.04),0_18px_40px_-28px_rgba(17,17,17,0.35)]; }
+  .panel { @apply rounded-2xl border border-line bg-card shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_24px_50px_-30px_rgba(0,0,0,0.9)]; }
   .h-section { @apply font-display text-4xl sm:text-6xl font-bold tracking-tightest leading-[0.95] text-ink; }
 }
 
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #F3F0E8; }
-::-webkit-scrollbar-thumb { background: #cfcabd; border-radius: 9999px; }
-::-webkit-scrollbar-thumb:hover { background: #2B44FF; }
+::-webkit-scrollbar-track { background: #07080B; }
+::-webkit-scrollbar-thumb { background: #262a35; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #4C6BFF; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

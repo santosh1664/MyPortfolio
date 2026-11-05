@@ -13,12 +13,12 @@ const AskBar = () => {
   const [q, setQ] = useState('');
   return (
     <form onSubmit={(e) => { e.preventDefault(); askSantosh(q || 'Give me a 30-second intro'); setQ(''); }}
-          className="flex items-center gap-2 rounded-full border border-ink/15 bg-card p-1.5 pl-5 shadow-[0_12px_30px_-22px_rgba(17,17,17,0.6)] transition focus-within:border-blue">
+          className="flex items-center gap-2 rounded-full border border-ink/15 bg-card p-1.5 pl-5 shadow-[0_12px_40px_-20px_rgba(76,107,255,0.45)] transition focus-within:border-blue">
       <span className="font-mono text-[13px] text-blue">ask&gt;</span>
       <input value={q} onChange={(e) => setQ(e.target.value)} aria-label="Ask my AI assistant"
              placeholder="anything about me — skills, projects, availability…"
              className="min-w-0 flex-1 bg-transparent py-2 text-[14.5px] placeholder:text-mute/80 focus:outline-none" />
-      <button type="submit" className="flex h-10 w-10 items-center justify-center rounded-full bg-blue text-white transition hover:bg-ink" aria-label="Ask"><FaArrowRight size={13} /></button>
+      <button type="submit" className="flex h-10 w-10 items-center justify-center rounded-full bg-blue text-white transition hover:bg-white hover:text-black" aria-label="Ask"><FaArrowRight size={13} /></button>
     </form>
   );
 };
@@ -36,7 +36,7 @@ const Hero = () => (
           <span className="relative whitespace-nowrap">
             <span className="relative z-10">banks can trust</span>
             <svg className="absolute -bottom-2 left-0 h-3 w-full" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden>
-              <path d="M2 9 C 80 2, 220 2, 298 7" fill="none" stroke="#2B44FF" strokeWidth="4" strokeLinecap="round" />
+              <path d="M2 9 C 80 2, 220 2, 298 7" fill="none" stroke="#4C6BFF" strokeWidth="4" strokeLinecap="round" />
             </svg>
           </span>
           <span className="text-blue">.</span>
@@ -62,14 +62,14 @@ const Hero = () => (
     </div>
 
     {/* ticker */}
-    <div className="mt-20 border-y border-line bg-ink py-4 text-paper">
+    <div className="mt-20 border-y border-blue/40 bg-blue py-4 text-white">
       <div className="flex overflow-hidden" aria-label="Highlights">
         <div className="flex shrink-0 animate-marquee items-center gap-10 pr-10 whitespace-nowrap">
           {[...heroStats, ...heroStats, ...heroStats, ...heroStats].map((s, i) => (
             <span key={i} className="flex items-center gap-3 text-[15px]">
               <span className="font-display text-xl font-bold text-white">{s.k}</span>
-              <span className="text-paper/60">{s.v}</span>
-              <span className="text-blue">◆</span>
+              <span className="text-white/75">{s.v}</span>
+              <span className="text-white/50">◆</span>
             </span>
           ))}
         </div>

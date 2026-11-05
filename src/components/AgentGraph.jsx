@@ -28,7 +28,7 @@ const EDGES = [
 const Packets = () => (
   <g>
     {EDGES.map((d, i) => (
-      <circle key={d} r="4" fill="#2B44FF">
+      <circle key={d} r="4" fill="#4C6BFF">
         <animateMotion dur="2.4s" repeatCount="indefinite" begin={`${i * 0.6}s`} path={d} />
       </circle>
     ))}
@@ -43,7 +43,7 @@ const NodeCard = ({ n, active, onEnter, typed }) => (
     onClick={() => (n.id === 'ask' ? askSantosh(SAMPLE_QS.find((q) => typed && q.startsWith(typed)) || SAMPLE_QS[0]) : onEnter())}
     style={{ left: `${(n.x / 500) * 100}%`, top: `${(n.y / 400) * 100}%`, transform: `translate(-50%, ${active ? '-56%' : '-50%'})` }}
     className={`absolute w-[36%] rounded-xl border bg-card px-3.5 py-3 text-left transition-all duration-300 ${
-      active ? 'border-blue shadow-[0_14px_40px_-16px_rgba(43,68,255,0.65)]' : 'border-line hover:border-ink/30'
+      active ? 'border-blue bg-[#151a2e] shadow-[0_14px_50px_-12px_rgba(76,107,255,0.75)]' : 'border-line hover:border-ink/30'
     }`}
     aria-label={`${n.kind}: ${n.title}`}
   >
@@ -104,15 +104,15 @@ const AgentGraph = () => {
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-mint" /> live
           </span>
         </div>
-        <div className="relative aspect-[5/4] w-full rounded-xl bg-paper/70">
+        <div className="relative aspect-[5/4] w-full rounded-xl bg-paper/60">
           <svg viewBox="0 0 500 400" className="absolute inset-0 h-full w-full" aria-hidden>
             <defs>
               <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M0 0 L10 5 L0 10 z" fill="#111" fillOpacity="0.35" />
+                <path d="M0 0 L10 5 L0 10 z" fill="#ffffff" fillOpacity="0.35" />
               </marker>
             </defs>
             {EDGES.map((d) => (
-              <path key={d} d={d} fill="none" stroke="#111" strokeOpacity="0.28" strokeWidth="1.5" strokeDasharray="4 5" markerEnd="url(#arr)" />
+              <path key={d} d={d} fill="none" stroke="#ffffff" strokeOpacity="0.22" strokeWidth="1.5" strokeDasharray="4 5" markerEnd="url(#arr)" />
             ))}
             {!reduce && <Packets />}
           </svg>
@@ -122,9 +122,9 @@ const AgentGraph = () => {
         </div>
         <AnimatePresence mode="wait">
           <Motion.div key={cur.id} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.25 }}
-                      className="mx-1 mt-3 flex min-h-[64px] gap-3 rounded-xl bg-ink px-4 py-3 text-paper">
-            <span className="font-mono text-[11px] text-blueSoft/70">{cur.step}</span>
-            <p className="text-[13px] leading-relaxed text-paper/85">{cur.detail}</p>
+                      className="mx-1 mt-3 flex min-h-[64px] gap-3 rounded-xl border border-blue/30 bg-blue/10 px-4 py-3">
+            <span className="font-mono text-[11px] text-blue">{cur.step}</span>
+            <p className="text-[13px] leading-relaxed text-ink/85">{cur.detail}</p>
           </Motion.div>
         </AnimatePresence>
       </div>

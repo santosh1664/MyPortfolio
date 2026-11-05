@@ -64,7 +64,7 @@ const Skills = () => {
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {g.items.map((s) => (
-                    <span key={s.name} className={`chip transition ${hot === g.k ? 'border-blue/30 bg-blueSoft/60 text-ink' : ''}`}>{s.name}</span>
+                    <span key={s.name} className={`chip transition ${hot === g.k ? 'border-blue/30 bg-blue/15 text-ink' : ''}`}>{s.name}</span>
                   ))}
                 </div>
               </div>
