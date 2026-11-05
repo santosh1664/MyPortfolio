@@ -5,36 +5,30 @@
 @layer base {
   html { scroll-behavior: smooth; }
   body {
-    @apply bg-ink text-bone font-sans antialiased;
-    background-image:
-      radial-gradient(1200px 600px at 85% -10%, rgba(255,45,85,0.10), transparent 60%),
-      radial-gradient(900px 500px at -10% 40%, rgba(255,255,255,0.035), transparent 60%);
-    background-attachment: fixed;
+    @apply bg-paper text-ink font-sans antialiased;
+    /* subtle dotted "graph paper" */
+    background-image: radial-gradient(rgba(17,17,17,0.09) 1px, transparent 1px);
+    background-size: 22px 22px;
   }
-  ::selection { @apply bg-accent text-white; }
-  :focus-visible { outline: 2px solid #ff2d55; outline-offset: 3px; border-radius: 4px; }
+  ::selection { @apply bg-blue text-white; }
+  :focus-visible { outline: 2px solid #2B44FF; outline-offset: 3px; border-radius: 6px; }
 }
 
 @layer components {
-  .eyebrow { @apply font-mono text-[11px] sm:text-xs uppercase tracking-[0.22em] text-mute; }
-  .chip { @apply inline-flex items-center rounded-full border border-line bg-white/[0.03] px-3 py-1 font-mono text-[11px] text-bone/80; }
-  .btn-primary { @apply inline-flex items-center gap-2 rounded-full bg-bone px-6 py-3 font-mono text-xs uppercase tracking-[0.18em] text-ink transition hover:bg-white; }
-  .btn-ghost { @apply inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 font-mono text-xs uppercase tracking-[0.18em] text-bone transition hover:border-accent hover:text-accent; }
-  .card { @apply rounded-2xl border border-line bg-panel/80 backdrop-blur-sm; }
-  .grid-bg {
-    background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
-  }
+  .label { @apply font-mono text-[11px] uppercase tracking-[0.16em] text-mute; }
+  .chip { @apply inline-flex items-center rounded-md border border-line bg-card px-2.5 py-1 font-mono text-[11.5px] text-ink/80; }
+  .btn-ink { @apply inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition hover:bg-blue; }
+  .btn-line { @apply inline-flex items-center gap-2 rounded-full border border-ink/25 px-6 py-3 text-sm font-medium text-ink transition hover:border-ink hover:bg-ink hover:text-paper; }
+  .panel { @apply rounded-2xl border border-line bg-card shadow-[0_1px_0_rgba(17,17,17,0.04),0_18px_40px_-28px_rgba(17,17,17,0.35)]; }
+  .h-section { @apply font-display text-4xl sm:text-6xl font-bold tracking-tightest leading-[0.95] text-ink; }
 }
 
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #09090b; }
-::-webkit-scrollbar-thumb { background: #2a2a31; border-radius: 9999px; }
-::-webkit-scrollbar-thumb:hover { background: #ff2d55; }
+::-webkit-scrollbar-track { background: #F3F0E8; }
+::-webkit-scrollbar-thumb { background: #cfcabd; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #2B44FF; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }

@@ -1,67 +1,86 @@
 import React from 'react';
-import { motion as Motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaAward } from 'react-icons/fa';
-import Tilt from './Tilt.jsx';
+import { FaGithub, FaAward } from 'react-icons/fa6';
+import Reveal from './Reveal.jsx';
 import SectionTitle from './SectionTitle.jsx';
 import { projects } from '../data/portfolioData.jsx';
 
-const LinkBtn = ({ href, icon, label }) =>
-  href ? (
-    <a href={href} target="_blank" rel="noopener noreferrer"
-       className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-mute transition hover:text-accent">
-      {React.createElement(icon, { size: 12 })} {label}
-    </a>
-  ) : null;
-
-const Card = ({ p, i }) => {
-  const featured = i < 2;
+const Links = ({ p, light }) => {
+  const cls = `inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[13px] transition ${light ? 'border-white/25 text-white hover:bg-white hover:text-ink' : 'border-ink/15 hover:border-ink hover:bg-ink hover:text-paper'}`;
   return (
-    <Motion.article
-      initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, delay: (i % 2) * 0.08 }}
-      whileHover={{ y: -6 }}
-      className={`group relative flex flex-col overflow-hidden rounded-2xl border border-line bg-panel p-6 sm:p-8 transition-colors hover:border-white/20 ${featured ? 'md:col-span-2' : ''}`}>
-      <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-accent/0 blur-3xl transition group-hover:bg-accent/15" />
-      <div className="flex items-start justify-between gap-4">
-        <span className="font-mono text-xs text-accent">{String(i + 1).padStart(2, '0')}</span>
-        <span className="eyebrow !text-[10px] text-right">{p.category}</span>
+    <div className="flex flex-wrap gap-2">
+      {p.liveLink && <a className={cls} href={p.liveLink} target="_blank" rel="noopener noreferrer">Live <span aria-hidden>↗</span></a>}
+      {p.githubLink && <a className={cls} href={p.githubLink} target="_blank" rel="noopener noreferrer"><FaGithub size={13} /> Code</a>}
+      {p.liveLink2 && <a className={cls} href={p.liveLink2} target="_blank" rel="noopener noreferrer">Demo <span aria-hidden>↗</span></a>}
+      {p.award && <a className={cls} href={p.award} target="_blank" rel="noopener noreferrer"><FaAward size={12} /> Award</a>}
+    </div>
+  );
+};
+
+const CaseStudy = ({ p, i }) => {
+  const dark = i === 0;
+  return (
+    <Reveal delay={i * 0.08} className={`flex flex-col rounded-3xl border p-7 sm:p-9 ${dark ? 'border-ink bg-ink text-paper' : 'border-line bg-card'}`}>
+      <div className="flex items-center justify-between">
+        <span className={`font-mono text-[12px] ${dark ? 'text-blueSoft/80' : 'text-blue'}`}>case_{String(i + 1).padStart(2, '0')}</span>
+        <span className={`font-mono text-[11px] uppercase tracking-[0.14em] ${dark ? 'text-paper/50' : 'text-mute'}`}>{p.date}</span>
       </div>
-      <h3 className={`mt-5 font-display font-bold tracking-tight text-bone ${featured ? 'text-3xl sm:text-4xl' : 'text-2xl'}`}>{p.title}</h3>
-      <div className="mt-1 font-mono text-[11px] text-mute">{p.date}</div>
-      <p className={`mt-4 leading-relaxed text-mute ${featured ? 'max-w-3xl' : 'text-sm'}`}>{p.description}</p>
+      <h3 className="mt-5 font-display text-[28px] font-extrabold leading-[1.05] tracking-tight sm:text-[34px]">{p.title.split('—')[0].trim()}</h3>
+      <div className={`mt-1 text-[15px] ${dark ? 'text-paper/60' : 'text-mute'}`}>{(p.title.split('—')[1] || p.category).trim()}</div>
+      <p className={`mt-5 text-[15px] leading-relaxed ${dark ? 'text-paper/80' : 'text-ink/75'}`}>{p.description}</p>
       {p.highlights && (
-        <ul className={`mt-5 grid gap-3 ${featured ? 'lg:grid-cols-2' : ''}`}>
+        <ul className="mt-5 space-y-2.5">
           {p.highlights.map((h) => (
-            <li key={h} className="flex gap-3 text-sm leading-relaxed text-bone/75">
-              <span className="mt-2 h-px w-4 shrink-0 bg-accent" />{h}
+            <li key={h} className={`flex gap-3 text-[14px] leading-relaxed ${dark ? 'text-paper/75' : 'text-ink/70'}`}>
+              <span className={`mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full ${dark ? 'bg-blueSoft' : 'bg-blue'}`} />{h}
             </li>
           ))}
         </ul>
       )}
-      <div className="mt-6 flex flex-wrap gap-2">
-        {p.tech.map((t) => <span key={t} className="chip">{t}</span>)}
+      <div className="mt-6 flex flex-wrap gap-1.5">
+        {p.tech.slice(0, 12).map((t) => (
+          <span key={t} className={`rounded-md px-2 py-0.5 font-mono text-[11px] ${dark ? 'bg-white/10 text-paper/80' : 'bg-paper text-ink/75'}`}>{t}</span>
+        ))}
       </div>
-      <div className="mt-auto flex flex-wrap gap-5 pt-7">
-        <LinkBtn href={p.githubLink} icon={FaGithub} label="Code" />
-        <LinkBtn href={p.liveLink} icon={FaExternalLinkAlt} label="Live" />
-        <LinkBtn href={p.liveLink2} icon={FaExternalLinkAlt} label="Demo" />
-        <LinkBtn href={p.award} icon={FaAward} label="Award" />
-      </div>
-    </Motion.article>
+      <div className="mt-auto pt-7"><Links p={p} light={dark} /></div>
+    </Reveal>
   );
 };
 
-const Projects = () => (
-  <section id="projects" className="py-24 sm:py-32">
-    <div className="mx-auto max-w-7xl px-5 sm:px-8">
-      <Tilt strength={0.6}>
-        <SectionTitle id="projects-title" index="03" kicker="Selected work">Things I've built</SectionTitle>
-      </Tilt>
-      <div className="grid gap-5 md:grid-cols-2">
-        {projects.map((p, i) => <Card key={p.title} p={p} i={i} />)}
+const Projects = () => {
+  const [a, b, ...rest] = projects;
+  return (
+    <section id="projects" className="py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <SectionTitle id="projects-title" index="03" file="work/case_studies" aside="Two flagship builds, then the archive: accessibility, ML, systems and games.">
+          Selected work.
+        </SectionTitle>
+        <div className="grid gap-5 lg:grid-cols-2">
+          <CaseStudy p={a} i={0} />
+          <CaseStudy p={b} i={1} />
+        </div>
+
+        <Reveal className="mt-14">
+          <div className="label mb-3">archive/</div>
+          <ul className="divide-y divide-line border-y border-line">
+            {rest.map((p, i) => (
+              <li key={p.title} className="group grid gap-2 py-5 transition sm:grid-cols-[48px_1.4fr_1fr_auto] sm:items-center sm:gap-6">
+                <span className="font-mono text-[12px] text-mute">{String(i + 3).padStart(2, '0')}</span>
+                <div>
+                  <h4 className="font-display text-lg font-bold leading-tight transition group-hover:text-blue">{p.title}</h4>
+                  <p className="mt-1 line-clamp-2 text-[13.5px] leading-relaxed text-mute">{p.description}</p>
+                </div>
+                <div className="flex flex-wrap gap-1">{p.tech.slice(0, 4).map((t) => <span key={t} className="chip !text-[10.5px]">{t}</span>)}</div>
+                <div className="flex items-center gap-3 sm:justify-end">
+                  <span className="font-mono text-[11px] text-mute">{p.date.split('–')[0].trim()}</span>
+                  {p.githubLink && <a href={p.githubLink} target="_blank" rel="noopener noreferrer" aria-label={`${p.title} code`} className="rounded-full border border-line p-2 transition hover:border-ink hover:bg-ink hover:text-paper"><FaGithub size={14} /></a>}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Projects;

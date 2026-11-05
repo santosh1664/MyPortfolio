@@ -13,9 +13,9 @@ const inline = (s, key) => {
   while ((m = re.exec(s))) {
     if (m.index > last) out.push(s.slice(last, m.index));
     const t = m[0];
-    if (t.startsWith('**')) out.push(<strong key={`${key}-${i++}`} className="font-semibold text-bone">{t.slice(2, -2)}</strong>);
+    if (t.startsWith('**')) out.push(<strong key={`${key}-${i++}`} className="font-semibold text-ink">{t.slice(2, -2)}</strong>);
     else if (t.startsWith('_')) out.push(<em key={`${key}-${i++}`} className="not-italic text-mute/80 text-[12px]">{t.slice(1, -1)}</em>);
-    else if (t.startsWith('`')) out.push(<code key={`${key}-${i++}`} className="rounded bg-white/10 px-1 font-mono text-[11px]">{t.slice(1, -1)}</code>);
+    else if (t.startsWith('`')) out.push(<code key={`${key}-${i++}`} className="rounded bg-ink/10 px-1 font-mono text-[11px]">{t.slice(1, -1)}</code>);
     else {
       const [, label, href] = t.match(/\[([^\]]+)\]\(([^)]+)\)/);
       out.push(<a key={`${key}-${i++}`} href={href} target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-2 hover:underline">{label}</a>);
@@ -57,11 +57,11 @@ const ScoreRing = ({ score }) => {
   return (
     <div className="relative mb-2 flex items-center gap-3">
       <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden>
-        <circle cx="32" cy="32" r={r} stroke="rgba(255,255,255,0.1)" strokeWidth="6" fill="none" />
-        <circle cx="32" cy="32" r={r} stroke="#ff2d55" strokeWidth="6" fill="none" strokeLinecap="round"
+        <circle cx="32" cy="32" r={r} stroke="rgba(17,17,17,0.1)" strokeWidth="6" fill="none" />
+        <circle cx="32" cy="32" r={r} stroke="#2B44FF" strokeWidth="6" fill="none" strokeLinecap="round"
                 strokeDasharray={c} strokeDashoffset={c - (c * score) / 100} transform="rotate(-90 32 32)" style={{ transition: 'stroke-dashoffset 1s ease' }} />
       </svg>
-      <div className="absolute left-0 top-0 flex h-16 w-16 items-center justify-center font-display text-lg font-bold text-bone">{score}%</div>
+      <div className="absolute left-0 top-0 flex h-16 w-16 items-center justify-center font-display text-lg font-bold text-ink">{score}%</div>
       <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-mute">Job fit score</div>
     </div>
   );
@@ -168,13 +168,13 @@ const Assistant = () => {
           <Motion.button
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}
             onClick={() => setOpen(true)}
-            className="group fixed bottom-5 right-5 z-[60] flex items-center gap-3 rounded-full border border-white/15 bg-panel/90 py-2 pl-2 pr-5 shadow-[0_20px_60px_-15px_rgba(255,45,85,0.55)] backdrop-blur-md transition hover:border-accent"
+            className="group fixed bottom-5 right-5 z-[60] flex items-center gap-3 rounded-full border border-ink/15 bg-card/95 py-2 pl-2 pr-5 shadow-[0_20px_50px_-18px_rgba(43,68,255,0.55)] backdrop-blur-md transition hover:border-accent"
             aria-label={`Open ${ME}'s assistant`}>
             <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-accent font-display text-sm font-bold text-white">
-              DG<span className="absolute -right-0.5 -top-0.5 h-3 w-3 rounded-full border-2 border-panel bg-emerald-400" />
+              DG<span className="absolute -right-0.5 -top-0.5 h-3 w-3 rounded-full border-2 border-card bg-mint" />
             </span>
             <span className="text-left">
-              <span className="block font-display text-sm font-semibold text-bone">Ask about {ME}</span>
+              <span className="block font-display text-sm font-semibold text-ink">Ask about {ME}</span>
               <span className="block font-mono text-[10px] uppercase tracking-[0.16em] text-mute">AI assistant · ⌘K</span>
             </span>
           </Motion.button>
@@ -188,33 +188,33 @@ const Assistant = () => {
             role="dialog" aria-label={`${ME}'s assistant`}
             initial={{ opacity: 0, y: 30, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 30, scale: 0.97 }}
             transition={{ type: 'spring', stiffness: 260, damping: 26 }}
-            className="fixed inset-x-3 bottom-3 top-16 z-[60] flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#0d0d11]/95 shadow-[0_40px_120px_-20px_rgba(0,0,0,0.9)] backdrop-blur-xl sm:inset-x-auto sm:right-5 sm:top-auto sm:bottom-5 sm:h-[min(680px,calc(100vh-40px))] sm:w-[420px]">
+            className="fixed inset-x-3 bottom-3 top-16 z-[60] flex flex-col overflow-hidden rounded-3xl border border-ink/10 bg-card/95 shadow-[0_40px_120px_-30px_rgba(17,17,17,0.45)] backdrop-blur-xl sm:inset-x-auto sm:right-5 sm:top-auto sm:bottom-5 sm:h-[min(680px,calc(100vh-40px))] sm:w-[420px]">
             {/* header */}
-            <header className="relative border-b border-white/10 px-5 pb-3 pt-4">
-              <div className="pointer-events-none absolute -right-10 -top-16 h-40 w-40 rounded-full bg-accent/25 blur-3xl" />
+            <header className="relative border-b border-ink/10 px-5 pb-3 pt-4">
+              <div className="pointer-events-none absolute -right-10 -top-16 h-40 w-40 rounded-full bg-blue/15 blur-3xl" />
               <div className="relative flex items-center gap-3">
                 <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-accent font-display text-sm font-bold text-white">
-                  DG<span className="absolute -right-0.5 -top-0.5 h-3 w-3 rounded-full border-2 border-[#0d0d11] bg-emerald-400" />
+                  DG<span className="absolute -right-0.5 -top-0.5 h-3 w-3 rounded-full border-2 border-card bg-mint" />
                 </span>
                 <div className="flex-1">
-                  <div className="font-display text-[15px] font-semibold text-bone">{ME}'s assistant</div>
+                  <div className="font-display text-[15px] font-semibold text-ink">{ME}'s assistant</div>
                   <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-mute">Answers from his real résumé</div>
                 </div>
-                <button onClick={copySummary} className="rounded-full p-2 text-mute transition hover:bg-white/5 hover:text-bone" title="Copy recruiter summary" aria-label="Copy recruiter summary">
-                  {copied ? <FaCheck className="text-emerald-400" /> : <FaRegCopy />}
+                <button onClick={copySummary} className="rounded-full p-2 text-mute transition hover:bg-ink/5 hover:text-ink" title="Copy recruiter summary" aria-label="Copy recruiter summary">
+                  {copied ? <FaCheck className="text-mint" /> : <FaRegCopy />}
                 </button>
-                <button onClick={reset} className="rounded-full p-2 text-mute transition hover:bg-white/5 hover:text-bone" title="New conversation" aria-label="New conversation"><FaRedo size={12} /></button>
-                <button onClick={() => setOpen(false)} className="rounded-full p-2 text-mute transition hover:bg-white/5 hover:text-bone" aria-label="Close"><FaTimes /></button>
+                <button onClick={reset} className="rounded-full p-2 text-mute transition hover:bg-ink/5 hover:text-ink" title="New conversation" aria-label="New conversation"><FaRedo size={12} /></button>
+                <button onClick={() => setOpen(false)} className="rounded-full p-2 text-mute transition hover:bg-ink/5 hover:text-ink" aria-label="Close"><FaTimes /></button>
               </div>
-              <div className="relative mt-3 grid grid-cols-2 gap-1 rounded-full border border-white/10 bg-white/[0.03] p-1">
+              <div className="relative mt-3 grid grid-cols-2 gap-1 rounded-full border border-ink/10 bg-ink/[0.03] p-1">
                 {[['chat', 'Chat', FaComments], ['fit', 'Job fit check', FaBriefcase]].map(([k, label, I]) => (
                   <button key={k} onClick={() => setMode(k)}
-                          className={`flex items-center justify-center gap-2 rounded-full py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] transition ${mode === k ? 'bg-bone text-ink' : 'text-mute hover:text-bone'}`}>
+                          className={`flex items-center justify-center gap-2 rounded-full py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] transition ${mode === k ? 'bg-ink text-paper' : 'text-mute hover:text-ink'}`}>
                     {React.createElement(I, { size: 11 })} {label}
                   </button>
                 ))}
               </div>
-              {copied && <div className="relative mt-2 text-center font-mono text-[10px] text-emerald-400">Recruiter summary copied to clipboard</div>}
+              {copied && <div className="relative mt-2 text-center font-mono text-[10px] text-mint">Recruiter summary copied to clipboard</div>}
             </header>
 
             {mode === 'chat' ? (
@@ -222,13 +222,13 @@ const Assistant = () => {
                 <div ref={listRef} className="relative flex-1 space-y-4 overflow-y-auto px-4 py-4 [scrollbar-width:thin]" aria-live="polite">
                   {msgs.map((m) => (m.role === 'user' ? (
                     <div key={m.id} className="flex justify-end">
-                      <div className="max-w-[85%] rounded-2xl rounded-br-md bg-bone px-4 py-2.5 text-[13.5px] leading-relaxed text-ink">{m.text}</div>
+                      <div className="max-w-[85%] rounded-2xl rounded-br-md bg-ink px-4 py-2.5 text-[13.5px] leading-relaxed text-paper">{m.text}</div>
                     </div>
                   ) : (
                     <div key={m.id} data-bot className="flex gap-2.5">
                       <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15 font-display text-[9px] font-bold text-accent">DG</span>
                       <div className="min-w-0 max-w-[88%]">
-                        <div className="rounded-2xl rounded-tl-md border border-white/10 bg-white/[0.04] px-4 py-3 text-[13.5px] leading-relaxed text-bone/85">
+                        <div className="rounded-2xl rounded-tl-md border border-ink/10 bg-paper px-4 py-3 text-[13.5px] leading-relaxed text-ink/85">
                           {m.score != null && <ScoreRing score={m.score} />}
                           {m.text ? <Rich text={m.text} /> : (
                             <span className="flex gap-1 py-1" aria-label="typing">
@@ -240,7 +240,7 @@ const Assistant = () => {
                           <div className="mt-2 flex flex-wrap gap-1.5">
                             {m.follow.map((f) => (
                               <button key={f} onClick={() => ask(f)}
-                                      className="rounded-full border border-white/10 px-3 py-1 text-[12px] text-bone/75 transition hover:border-accent hover:text-bone">{f}</button>
+                                      className="rounded-full border border-ink/10 px-3 py-1 text-[12px] text-ink/75 transition hover:border-accent hover:text-ink">{f}</button>
                             ))}
                           </div>
                         )}
@@ -251,17 +251,17 @@ const Assistant = () => {
                     <div className="grid grid-cols-2 gap-2 pt-1">
                       {STARTERS.map((s) => (
                         <button key={s} onClick={() => ask(s)}
-                                className="rounded-xl border border-white/10 bg-white/[0.02] px-3 py-2.5 text-left text-[12.5px] leading-snug text-bone/80 transition hover:border-accent/60 hover:bg-white/[0.05]">{s}</button>
+                                className="rounded-xl border border-ink/10 bg-ink/[0.02] px-3 py-2.5 text-left text-[12.5px] leading-snug text-ink/80 transition hover:border-accent/60 hover:bg-ink/[0.05]">{s}</button>
                       ))}
                     </div>
                   )}
                 </div>
-                <form onSubmit={(e) => { e.preventDefault(); ask(input); }} className="border-t border-white/10 p-3">
-                  <div className="flex items-end gap-2 rounded-2xl border border-white/10 bg-white/[0.03] p-1.5 pl-4 focus-within:border-accent/60">
+                <form onSubmit={(e) => { e.preventDefault(); ask(input); }} className="border-t border-ink/10 p-3">
+                  <div className="flex items-end gap-2 rounded-2xl border border-ink/10 bg-ink/[0.03] p-1.5 pl-4 focus-within:border-accent/60">
                     <textarea ref={inputRef} rows={1} value={input} onChange={(e) => setInput(e.target.value)}
                               onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(input); } }}
                               placeholder={`Ask anything about ${ME}…`}
-                              className="max-h-28 flex-1 resize-none bg-transparent py-2 text-[13.5px] text-bone placeholder:text-mute focus:outline-none" />
+                              className="max-h-28 flex-1 resize-none bg-transparent py-2 text-[13.5px] text-ink placeholder:text-mute focus:outline-none" />
                     <button type="submit" disabled={!input.trim() || busy} aria-label="Send"
                             className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent text-white transition disabled:opacity-30"><FaArrowUp size={13} /></button>
                   </div>
@@ -270,13 +270,13 @@ const Assistant = () => {
               </>
             ) : (
               <div className="flex flex-1 flex-col p-5">
-                <h3 className="font-display text-xl font-bold tracking-tight text-bone">Is {ME} a fit for your role?</h3>
+                <h3 className="font-display text-xl font-bold tracking-tight text-ink">Is {ME} a fit for your role?</h3>
                 <p className="mt-1 text-[13px] leading-relaxed text-mute">Paste a job description. You'll get a match score, the skills he has and doesn't have, and the parts of his experience that back it up. Gaps are shown honestly, not hidden.</p>
                 <textarea value={jd} onChange={(e) => setJd(e.target.value)}
                           placeholder="Paste the job description here…"
-                          className="mt-4 flex-1 resize-none rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-[13px] leading-relaxed text-bone placeholder:text-mute focus:border-accent/60 focus:outline-none" />
+                          className="mt-4 flex-1 resize-none rounded-2xl border border-ink/10 bg-ink/[0.03] p-4 text-[13px] leading-relaxed text-ink placeholder:text-mute focus:border-accent/60 focus:outline-none" />
                 <button onClick={runFit} disabled={jd.trim().length < 40 || busy}
-                        className="mt-3 flex items-center justify-center gap-2 rounded-full bg-bone py-3 font-mono text-xs uppercase tracking-[0.18em] text-ink transition hover:bg-white disabled:opacity-30">
+                        className="mt-3 flex items-center justify-center gap-2 rounded-full bg-ink py-3 font-mono text-xs uppercase tracking-[0.18em] text-paper transition hover:bg-blue disabled:opacity-30">
                   <FaBriefcase /> Check fit
                 </button>
               </div>
