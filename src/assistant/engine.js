@@ -12,6 +12,7 @@ export const facts = {
   location: 'Dallas, Texas (DFW)',
   relocation: 'Open to relocation, and comfortable with on-site, hybrid, or remote roles.',
   availability: 'Can start on short notice (about two weeks).',
+  citiWhere: 'The role is based in New Jersey, and he works it remotely.',
   workAuth:
     `Authorized to work in the United States. For specifics on visa status and any future sponsorship, please email ${EMAIL} — he'll answer directly.`,
   compensation:
@@ -155,7 +156,7 @@ const skillLine = (arr, n = 99) => arr.slice(0, n).map((s) => s.name).join(', ')
 const intro = () =>
   `**${personalInfo.name} G ("${ME}")** is a Software Engineer in ${facts.location} with ${facts.yearsLabel} of experience in **Java, Python, and React**.\n\n` +
   bullets([
-    `**Now:** ${cur.role} at ${cur.company} (${cur.duration}), building AI agent workflows with Google ADK for Java and full-stack financial workflows used by 500+ internal users.`,
+    `**Now:** ${cur.role} at ${cur.company} (New Jersey, working remotely · ${cur.duration}), building AI agent workflows with Google ADK for Java and full-stack financial workflows used by 500+ internal users.`,
     `**Built:** rejekt.ai, a live Generative AI interview platform (RAG, LangGraph, OpenAI/Gemini, real-time Whisper voice).`,
     `**Research:** co-authored *Beyond Sight* at ACM W4A '24 (Judges' Award).`,
     `**Credentials:** MS in Computer Science, University of North Texas (GPA 3.82) · AWS Certified Developer – Associate.`,
@@ -176,7 +177,7 @@ const answers = {
   }),
   intro: () => ({ text: intro(), follow: ['What AI work has he done?', 'Why should we hire him?', 'Is he available?'] }),
   current: () => ({
-    text: `**${cur.role} at ${cur.company}** · ${cur.location} · ${cur.duration}\n\n${bullets(cur.points.slice(0, 5))}\n\n**Stack:** ${cur.tech.join(', ')}`,
+    text: `**${cur.role} at ${cur.company}** · ${cur.duration}\n${facts.citiWhere}\n\n${bullets(cur.points.slice(0, 5))}\n\n**Stack:** ${cur.tech.join(', ')}`,
     follow: ['Tell me about the AI agent work', 'What did he do at Zensar?', 'Biggest impact numbers?'],
   }),
   years: () => ({
@@ -285,7 +286,10 @@ const answers = {
     text: `${facts.availability} Based in ${facts.location}. ${facts.relocation}`,
     follow: ['How do I contact him?', 'Work authorization?'],
   }),
-  location: () => answers.availability(),
+  location: () => ({
+    text: `${ME} lives in ${facts.location}. His current ${cur.company} role is based in New Jersey and he works it remotely. ${facts.relocation}`,
+    follow: ['Is he available?', 'What is he working on now?'],
+  }),
   visa: () => ({ text: facts.workAuth, follow: ['Is he available?', 'How do I contact him?'] }),
   salary: () => ({ text: facts.compensation, follow: ['Is he available?', 'How do I contact him?'] }),
   contact: () => ({
@@ -319,7 +323,7 @@ const ROUTES = [
   ['certs', ['certif', 'aws certified', 'credential']],
   ['education', ['education', 'degree', 'master', 'bachelor', 'university', 'college', 'gpa', 'unt', 'vit', 'study', 'studied']],
   ['zensar', ['zensar', 'previous job', 'previous company', 'before citi', 'past experience', 'india']],
-  ['current', ['current', 'currently', 'right now', 'working on', ' now ', 'doing now', 'latest role', 'recent role', 'citi', 'present role', 'present job', 'working now', 'day to day', 'day-to-day']],
+  ['current', ['where does he work', 'where is he working', 'which company', 'what company', 'employer', 'work at', 'works at', 'current', 'currently', 'right now', 'working on', ' now ', 'doing now', 'latest role', 'recent role', 'citi', 'present role', 'present job', 'working now', 'day to day', 'day-to-day']],
   ['years', ['how many years', 'years of experience', 'how long', 'how experienced', 'seniority', 'level']],
   ['ai', [' ai', 'ai ', 'llm', 'genai', 'generative', 'agent', 'rag', 'machine learning', ' ml', 'langchain', 'langgraph', 'openai', 'gemini', 'nlp']],
   ['leadership', ['lead', 'team', 'mentor', 'collaborat', 'soft skill', 'communication', 'handball']],
@@ -427,7 +431,7 @@ export const STARTERS = [
 export const recruiterSummary = () =>
   `${personalInfo.name} G — Software Engineer (${facts.location})\n` +
   `${facts.yearsLabel} · Java 17/Spring Boot, Python/FastAPI, React, Kafka, AWS (Certified Developer)\n` +
-  `Now: ${cur.role}, ${cur.company} (${cur.duration}) — AI agent workflows (Google ADK), 500+ users, 50K+ req/day at 99.9%\n` +
+  `Now: ${cur.role}, ${cur.company}, New Jersey (remote) (${cur.duration}) — AI agent workflows (Google ADK), 500+ users, 50K+ req/day at 99.9%\n` +
   `Built: rejekt.ai — live GenAI interview platform (RAG, LangGraph, OpenAI/Gemini, Whisper)\n` +
   `MS CS, University of North Texas (3.82) · ACM W4A '24 co-author\n` +
   `${facts.availability} ${facts.relocation}\n` +
