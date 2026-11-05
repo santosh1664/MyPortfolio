@@ -25,7 +25,7 @@ function App() {
         <Experience />
         <Involvement />
         <Contact />
-        <ResumeChatWidget />
+        {!import.meta.env.VITE_STATIC_EXPORT && <ResumeChatWidget />}
       </main>
       <Footer />
       <ScrollToTop /> {/* Optional */}

@@ -1,77 +1,41 @@
 import React from 'react';
+import Tilt from './Tilt.jsx';
 import SectionTitle from './SectionTitle.jsx';
 import { experience } from '../data/portfolioData.jsx';
-import { motion as Motion } from 'framer-motion';
-
-const experienceItemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.5,
-      ease: 'easeOut',
-    },
-  }),
-};
 
 const Experience = () => (
-  <section id="experience" className="py-20 bg-secondary-bg">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionTitle id="experience-title">Experience</SectionTitle>
-
-      <div className="max-w-5xl mx-auto mt-12 space-y-8">
-        {experience.map((item, index) => (
-          <Motion.div
-            key={`${item.company}-${item.role}`}
-            className="p-5 sm:p-6 bg-primary-bg rounded-lg shadow-xl hover:shadow-accent-1/20 transition-shadow duration-300"
-            custom={index}
-            variants={experienceItemVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-              <div>
-                <h3 className="text-md sm:text-lg lg:text-xl font-semibold text-accent-1 font-mono">
-                  {item.role}
-                </h3>
-                <p className="text-sm sm:text-md text-accent-2/90 font-semibold">
-                  {item.company}
-                  {item.location ? ` · ${item.location}` : ''}
-                </p>
-              </div>
-              <p className="text-xs sm:text-sm text-text-secondary/80 font-mono">
-                {item.duration}
-              </p>
-            </div>
-
-            {item.points?.length ? (
-              <ul className="list-disc list-inside space-y-1.5 text-text-secondary mt-3">
-                {item.points.map((point, i) => (
-                  <li key={`${item.company}-${i}`} className="text-xs sm:text-sm leading-relaxed">
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-
-            {item.tech?.length ? (
-              <div className="flex flex-wrap gap-2 mt-4">
-                {item.tech.map((tech) => (
-                  <span
-                    key={`${item.company}-${tech}`}
-                    className="px-3 py-1 text-xs font-mono rounded-full bg-secondary-bg text-accent-1"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            ) : null}
-          </Motion.div>
-        ))}
-      </div>
+  <section id="experience" className="py-24 sm:py-32">
+    <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <Tilt>
+        <div className="card p-7 sm:p-12">
+          <SectionTitle id="experience-title" index="04" kicker="Career">Experience</SectionTitle>
+          <ol className="relative space-y-12 border-l border-line pl-8 sm:pl-12">
+            {experience.map((job, i) => (
+              <li key={job.company} className="relative">
+                <span className={`absolute -left-[37px] sm:-left-[53px] top-1.5 h-3 w-3 rounded-full ring-4 ring-ink ${i === 0 ? 'bg-accent shadow-[0_0_16px_rgba(255,45,85,0.8)]' : 'bg-white/40'}`} />
+                <div className="grid gap-6 lg:grid-cols-[260px_1fr]">
+                  <div>
+                    <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">{job.duration}</div>
+                    <div className="mt-2 font-display text-2xl font-bold tracking-tight text-bone">{job.company}</div>
+                    <div className="text-sm text-mute">{job.location}</div>
+                  </div>
+                  <div>
+                    <h3 className="font-display text-xl font-semibold text-bone">{job.role}</h3>
+                    <ul className="mt-4 space-y-2.5">
+                      {job.points.map((pt) => (
+                        <li key={pt} className="flex gap-3 text-mute leading-relaxed">
+                          <span className="mt-2.5 h-px w-4 shrink-0 bg-accent" />{pt}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-5 flex flex-wrap gap-2">{job.tech.map((t) => <span key={t} className="chip">{t}</span>)}</div>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </Tilt>
     </div>
   </section>
 );

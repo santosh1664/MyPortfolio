@@ -1,74 +1,55 @@
 import React from 'react';
+import Tilt from './Tilt.jsx';
 import SectionTitle from './SectionTitle.jsx';
-import { education } from '../data/portfolioData.jsx';
-import { motion as Motion } from 'framer-motion';
-import { FaUniversity, FaSchool } from 'react-icons/fa'; // Example icons
+import { personalInfo, education } from '../data/portfolioData.jsx';
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: i => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.5,
-    },
-  }),
-};
+const stats = [
+  { k: '3+', v: 'Years shipping production software' },
+  { k: '3.82', v: 'MS CS GPA · University of North Texas' },
+  { k: 'AWS', v: 'Certified Developer – Associate' },
+  { k: "W4A '24", v: 'ACM accessibility research, Judges’ Award' },
+];
 
-const About = () => {
-  return (
-    <section id="about" className="py-20 bg-secondary-bg">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle id="about-title">About Me</SectionTitle>
-        
-        <Motion.div 
-          className="max-w-3xl mx-auto text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-lg text-text-secondary leading-relaxed">
-           Hi, I'm Durgasantosh — a software engineer skilled in building scalable, user-focused applications. I love solving real-world problems through technology and thrive in collaborative, fast-paced environments.
-          </p>
-          {/* <p className="text-lg text-text-secondary leading-relaxed mt-4">
-            Outside of code, you'll find me shooting photos—capturing street scenes, candid moments, and campus life, then polishing them in Lightroom. It's my way to stay curious about composition, light, and storytelling.
-          </p> */}
-        </Motion.div>
-
-        <h3 className="text-2xl font-semibold text-center text-accent-1 mb-8 font-mono">Education</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-8 justify-items-center justify-center">
-          {education.map((edu, index) => (
-            <Motion.div
-              key={index}
-              className="w-full max-w-sm bg-primary-bg p-6 rounded-lg shadow-xl hover:shadow-accent-1/20 transition-shadow duration-300"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              custom={index}
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <div className="flex items-center mb-3">
-                {edu.institution.toLowerCase().includes("university") ? 
-                  <FaUniversity className="text-accent-1 mr-3 text-2xl" /> : 
-                  <FaSchool className="text-accent-1 mr-3 text-2xl" />
-                }
-                <h4 className="text-xl font-semibold text-text-primary">{edu.institution}</h4>
+const About = () => (
+  <section id="about" className="relative py-24 sm:py-32">
+    <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <Tilt>
+        <div className="card p-7 sm:p-12">
+          <SectionTitle id="about-title" index="01" kicker="About">Who I am</SectionTitle>
+          <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr]">
+            <div>
+              <p className="font-display text-2xl sm:text-3xl leading-snug text-bone">
+                I build enterprise-grade platforms and <span className="font-serif italic text-accent">intelligent</span> products —
+                from Spring Boot microservices and Kafka pipelines to LLM-powered tools.
+              </p>
+              <p className="mt-6 max-w-2xl leading-relaxed text-mute">{personalInfo.bio}</p>
+              <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line">
+                {stats.map((s) => (
+                  <div key={s.k} className="bg-panel p-5">
+                    <div className="font-display text-3xl font-bold tracking-tight text-bone">{s.k}</div>
+                    <div className="mt-1 text-xs leading-snug text-mute">{s.v}</div>
+                  </div>
+                ))}
               </div>
-              <p className="text-text-secondary font-medium">{edu.degree}</p>
-              {edu.duration ? (
-                <p className="text-sm text-text-secondary font-mono">{edu.duration}</p>
-              ) : null}
-              {edu.score ? (
-                <p className="text-sm text-accent-1 font-mono mt-1">{edu.score}</p>
-              ) : null}
-            </Motion.div>
-          ))}
+            </div>
+            <div>
+              <div className="eyebrow mb-5">Education</div>
+              <ol className="space-y-4">
+                {education.map((e) => (
+                  <li key={e.degree} className="rounded-xl border border-line bg-white/[0.02] p-5">
+                    <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">{e.duration}</div>
+                    <div className="mt-2 font-display text-lg font-semibold text-bone">{e.degree}</div>
+                    <div className="mt-1 text-sm text-mute">{e.institution.trim()}</div>
+                    {e.score && <div className="mt-3 chip">{e.score}</div>}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-  );
-};
+      </Tilt>
+    </div>
+  </section>
+);
 
 export default About;

@@ -1,123 +1,108 @@
-import React from 'react';
-import { TypeAnimation } from 'react-type-animation';
-import { personalInfo, socialLinks } from '../data/portfolioData.jsx';
-import { FaDownload, FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { motion as Motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { Link as ScrollLink } from 'react-scroll';
-import { motion as Motion } from 'framer-motion';
+import { FaArrowRight, FaDownload, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { personalInfo, socialLinks } from '../data/portfolioData.jsx';
 
-// Map icon names to components for social links
-const heroSocialIconMap = {
-  FaLinkedin,
-  FaGithub,
-  FaEnvelope,
-};
+const icons = { FaGithub, FaLinkedin, FaEnvelope };
 
-const getHeroSocialIcon = (iconName, size = 28) => {
-  const IconComponent = heroSocialIconMap[iconName];
-  return IconComponent ? <IconComponent size={size} /> : null;
+// Drop a transparent-background photo at public/profile.png to replace the monogram.
+const PHOTO = '/profile.png';
+
+const fade = (d) => ({ initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.8, delay: d, ease: [0.22, 1, 0.36, 1] } });
+
+const Portrait = () => {
+  const [ok, setOk] = useState(true);
+  if (ok) {
+    return (
+      <img src={PHOTO} alt={`Portrait of ${personalInfo.name}`} onError={() => setOk(false)}
+           className="relative z-10 h-full w-full object-contain object-bottom [mask-image:linear-gradient(to_bottom,black_70%,transparent)]" />
+    );
+  }
+  return (
+    <div className="relative z-10 flex h-full w-full items-center justify-center">
+      <div className="relative">
+        <span className="font-display text-[11rem] sm:text-[15rem] font-bold leading-none tracking-tightest text-transparent [-webkit-text-stroke:1.5px_rgba(244,241,234,0.35)]">DG</span>
+        <span className="absolute bottom-6 right-0 h-5 w-5 rounded-full bg-accent shadow-[0_0_40px_10px_rgba(255,45,85,0.45)]" />
+      </div>
+    </div>
+  );
 };
 
 const Hero = () => {
+  const reduce = useReducedMotion();
+  const { scrollY } = useScroll();
+  const rotateX = useTransform(scrollY, [0, 700], [0, reduce ? 0 : 18]);
+  const scale = useTransform(scrollY, [0, 700], [1, reduce ? 1 : 0.9]);
+  const opacity = useTransform(scrollY, [0, 650], [1, 0.15]);
+
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center bg-primary-bg relative overflow-hidden">
-      {/* Optional: Subtle background elements if you want */}
-      {/* <div className="absolute inset-0 opacity-5">
-        <img src="/path/to/subtle-code-pattern.svg" alt="background pattern" className="w-full h-full object-cover"/>
-      </div> */}
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <Motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <h3 className="text-accent-1 font-mono text-lg sm:text-xl mb-3">
-            Hi, my name is
-          </h3>
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-bold text-text-primary mb-4">
-            {personalInfo.name}
-          </h1>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-text-secondary mb-6">
-            <TypeAnimation
-              sequence={[
-              'I improve performance and scalability.',
-              2000,
-              'I design cloud-native systems.',
-              2000,
-              'I work with Java, Python & React.',
-              2000,
-              'I automate CI/CD pipelines.',
-              2000,
-             'I solve real-world engineering problems.',
-              2000,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-              className="font-mono"
-            />
-          </h2>
-          <p className="text-text-secondary max-w-2xl mx-auto mb-8 text-base sm:text-lg">
-            {personalInfo.bio}
-          </p>
-        </Motion.div>
+    <section id="hero" className="relative flex min-h-screen items-center overflow-hidden pt-16">
+      <div className="grid-bg pointer-events-none absolute inset-0" />
+      <div style={{ perspective: 1400 }} className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8">
+        <Motion.div style={{ rotateX, scale, opacity, transformOrigin: 'center top' }}
+                    className="grid items-center gap-10 lg:grid-cols-[1.25fr_1fr]">
+          <div>
+            <Motion.div {...fade(0.1)} className="eyebrow mb-6 flex flex-wrap items-center gap-3">
+              <span className="h-[2px] w-6 bg-accent" />
+              <span>Software Engineer</span><span className="text-white/20">·</span>
+              <span>Full-Stack &amp; AI Systems</span><span className="text-white/20">·</span>
+              <span>Dallas, TX</span>
+            </Motion.div>
 
-        <Motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12"
-        >
-          <ScrollLink
-            to="projects"
-            smooth={true}
-            duration={500}
-            offset={-70}
-            className="px-8 py-3 font-mono text-lg bg-accent-1 text-primary-bg rounded-md hover:bg-opacity-80 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-accent-1/30"
-          >
-            View My Work
-          </ScrollLink>
-          <a
-            href={personalInfo.resumeLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-3 font-mono text-lg border-2 border-accent-1 text-accent-1 rounded-md hover:bg-accent-1 hover:text-primary-bg transition-all duration-300 flex items-center shadow-lg hover:shadow-accent-1/30"
-          >
-            <FaDownload className="mr-2" /> Download CV
-          </a>
-        </Motion.div>
+            <Motion.h1 {...fade(0.2)} className="font-display font-bold uppercase leading-[0.86] tracking-tightest text-bone text-[3.4rem] sm:text-[5.5rem] lg:text-[7.2rem]">
+              Durga<br />santosh<span className="text-accent">.</span>
+            </Motion.h1>
 
-        <Motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex justify-center space-x-6"
-        >
-          {Object.values(socialLinks).map((link, index) => (
-            <a
-              key={index}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-text-secondary hover:text-accent-1 transition-colors"
-              aria-label={link.url.split(':')[0]}
-            >
-              {getHeroSocialIcon(link.iconName, 28)}
-            </a>
-          ))}
+            <Motion.p {...fade(0.35)} className="mt-6 font-display text-2xl sm:text-3xl font-medium text-bone">
+              Building systems that scale.
+              <span className="block font-serif italic font-normal text-bone/70">Engineering what's next.</span>
+            </Motion.p>
+
+            <Motion.p {...fade(0.45)} className="mt-6 max-w-xl text-[15px] leading-relaxed text-mute">
+              {personalInfo.bio}
+            </Motion.p>
+
+            <Motion.div {...fade(0.55)} className="mt-9 flex flex-wrap items-center gap-4">
+              <ScrollLink to="projects" href="#projects" smooth duration={700} offset={-64} className="btn-primary cursor-pointer">
+                Explore my work <FaArrowRight />
+              </ScrollLink>
+              <a href={personalInfo.resumeLink} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+                <FaDownload /> Download CV
+              </a>
+              <div className="ml-1 flex items-center gap-4">
+                {Object.entries(socialLinks).map(([k, l]) => {
+                  const I = icons[l.iconName];
+                  return (
+                    <a key={k} href={l.url} target="_blank" rel="noopener noreferrer" aria-label={k} className="text-mute transition hover:text-accent">
+                      {I && <I size={20} />}
+                    </a>
+                  );
+                })}
+              </div>
+            </Motion.div>
+          </div>
+
+          <Motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.3 }}
+                      className="relative hidden h-[560px] lg:block">
+            <div className="absolute inset-x-8 bottom-0 top-16 rounded-[2rem] border border-line bg-gradient-to-b from-panel2 to-ink" />
+            <div className="absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full bg-accent/20 blur-[100px]" />
+            <Portrait />
+            <div className="absolute bottom-8 left-0 z-20 card px-4 py-3">
+              <div className="eyebrow !text-[10px]">Currently</div>
+              <div className="mt-1 font-display text-sm text-bone">Software Engineer · Citi</div>
+            </div>
+            <div className="absolute right-0 top-24 z-20 card px-4 py-3">
+              <div className="eyebrow !text-[10px]">Published</div>
+              <div className="mt-1 font-display text-sm text-bone">ACM W4A '24</div>
+            </div>
+          </Motion.div>
         </Motion.div>
       </div>
-      
-      {/* Scroll down indicator (optional) */}
-      <ScrollLink 
-        to="about" 
-        smooth={true} 
-        duration={800} 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer animate-bounce"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-accent-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
+
+      <ScrollLink to="about" href="#about" smooth duration={700} offset={-64}
+                  className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 cursor-pointer eyebrow hidden sm:flex flex-col items-center gap-2">
+        Scroll <span className="h-10 w-px animate-pulse bg-gradient-to-b from-accent to-transparent" />
       </ScrollLink>
     </section>
   );

@@ -37,10 +37,10 @@
   height: 56px;
   border-radius: 50%;
   border: none;
-  background: #0f172a;
+  background: #ff2d55;
   color: #f8fafc;
   font-size: 22px;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.35);
+  box-shadow: 0 10px 30px rgba(255, 45, 85, 0.35);
   cursor: pointer;
 }
 

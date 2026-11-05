@@ -7,9 +7,9 @@ export const personalInfo = {
   email: "gaddamsantosh03@gmail.com",
   linkedin: "https://www.linkedin.com/in/durgasantosh-g/",
   github: "https://github.com/santosh1664",
-  resumeLink: "/Durgasantosh_G_Software_Engineer.pdf", // Make sure your resume is in public/
-  bio: "Software Engineer with 3+ years of experience building responsive and high-performance web applications using React.js and Spring Boot. Focused on reusable UI components, asynchronous data flows, secure RESTful APIs, microservices-based architectures, AWS-based CI/CD, and AI-powered conversational systems.",
-  shortBio: "I build high-performance full-stack and AI-driven web systems." // For Hero section
+  resumeLink: (import.meta.env.VITE_RESUME_URL || "/Durgasantosh_G_Software_Engineer.pdf"), // Make sure your resume is in public/
+  bio: "Software Engineer with 3+ years of experience across full-stack development, building scalable applications using Java, Spring Boot, React, and AWS. Experienced in microservices, CI/CD pipelines, and delivering enterprise-grade systems in Agile environments.",
+  shortBio: "I build things for the web." // For Hero section
 };
 
 export const education = [
@@ -108,7 +108,18 @@ export const experience = [
 
 export const projects = [
   {
-    title: "Agentic AI Resume Chatbot with RAG",
+    title: "Rejekt.ai — Job Discovery & Honest Resume Tailoring",
+    tech: ["JavaScript", "Local LLM (Ollama)", "PostgreSQL", "Web Scraping", "ATS Scoring", "Automation"],
+    description:
+      "Finds jobs straight from company career pages (Greenhouse, Lever, Ashby, Workday and more), scores each posting against your resume, tailors the resume to the posting without inventing anything, runs an ATS-style score, and can auto-apply with an approval step. Runs locally so resumes and job data stay on your machine.",
+    date: "Jan 2026 – Present",
+    githubLink: "https://github.com/santosh1664/rejekt-ai",
+    liveLink: null,
+    category: "AI / Featured Project",
+    iconName: "FaRobot",
+  },
+  {
+    title: "Agentic AI Resume Chatbot with RAG (In Progress)",
     tech: [
       "React",
       "FastAPI",

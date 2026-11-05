@@ -1,68 +1,33 @@
 import React from 'react';
+import { FaAws, FaCheckCircle } from 'react-icons/fa';
+import Tilt from './Tilt.jsx';
 import SectionTitle from './SectionTitle.jsx';
 import { certifications } from '../data/portfolioData.jsx';
-import { motion as Motion } from 'framer-motion';
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: i => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.5,
-    },
-  }),
-};
 
 const Certifications = () => (
-  <section id="certifications" className="py-20 bg-primary-bg">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionTitle id="certifications-title">Certifications</SectionTitle>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-        {certifications.map((cert, index) => (
-          <Motion.div
-            key={cert.title}
-            className="bg-secondary-bg rounded-lg shadow-xl overflow-hidden"
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            custom={index}
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            {cert.image ? (
-              <img
-                src={cert.image}
-                alt={`${cert.title} certificate`}
-                className="w-full h-auto object-cover"
-                onError={(event) => {
-                  event.currentTarget.style.display = 'none';
-                }}
-              />
-            ) : null}
-            <div className="p-6 space-y-2">
-              <h3 className="text-xl font-semibold text-accent-1 font-mono">
-                {cert.title}
-              </h3>
-              <p className="text-text-secondary">{cert.issuer}</p>
-              <div className="text-sm text-text-secondary font-mono space-y-1">
-                <p>Issued: {cert.issued}</p>
-                <p>Expires: {cert.expires}</p>
-                <p>Validation ID: {cert.validationId}</p>
-              </div>
-              <a
-                href={cert.verifyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-accent-1 hover:underline font-mono text-sm"
-              >
-                Verify Certification
+  <section id="certifications" className="py-24 sm:py-32">
+    <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <Tilt strength={0.6}>
+        <SectionTitle id="certifications-title" index="05" kicker="Credentials">Certifications</SectionTitle>
+        <div className="grid gap-5 md:grid-cols-2">
+          {certifications.map((c) => (
+            <div key={c.title} className="card relative overflow-hidden p-7">
+              <FaAws className="absolute -right-4 -top-4 text-[9rem] text-white/[0.04]" aria-hidden />
+              <div className="eyebrow">{c.issuer}</div>
+              <h3 className="mt-3 font-display text-2xl font-bold tracking-tight text-bone">{c.title}</h3>
+              <dl className="mt-5 grid grid-cols-2 gap-4 font-mono text-[11px] text-mute">
+                <div><dt className="uppercase tracking-[0.16em] text-bone/50">Issued</dt><dd className="mt-1">{c.issued}</dd></div>
+                <div><dt className="uppercase tracking-[0.16em] text-bone/50">Expires</dt><dd className="mt-1">{c.expires}</dd></div>
+                <div className="col-span-2"><dt className="uppercase tracking-[0.16em] text-bone/50">Validation ID</dt><dd className="mt-1 break-all">{c.validationId}</dd></div>
+              </dl>
+              <a href={c.verifyUrl} target="_blank" rel="noopener noreferrer"
+                 className="mt-6 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent hover:underline">
+                <FaCheckCircle /> Verify credential
               </a>
             </div>
-          </Motion.div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Tilt>
     </div>
   </section>
 );
