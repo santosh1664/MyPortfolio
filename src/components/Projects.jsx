@@ -14,7 +14,7 @@ const LinkBtn = ({ href, icon, label }) =>
   ) : null;
 
 const Card = ({ p, i }) => {
-  const featured = i === 0;
+  const featured = i < 2;
   return (
     <Motion.article
       initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }}
@@ -29,6 +29,15 @@ const Card = ({ p, i }) => {
       <h3 className={`mt-5 font-display font-bold tracking-tight text-bone ${featured ? 'text-3xl sm:text-4xl' : 'text-2xl'}`}>{p.title}</h3>
       <div className="mt-1 font-mono text-[11px] text-mute">{p.date}</div>
       <p className={`mt-4 leading-relaxed text-mute ${featured ? 'max-w-3xl' : 'text-sm'}`}>{p.description}</p>
+      {p.highlights && (
+        <ul className={`mt-5 grid gap-3 ${featured ? 'lg:grid-cols-2' : ''}`}>
+          {p.highlights.map((h) => (
+            <li key={h} className="flex gap-3 text-sm leading-relaxed text-bone/75">
+              <span className="mt-2 h-px w-4 shrink-0 bg-accent" />{h}
+            </li>
+          ))}
+        </ul>
+      )}
       <div className="mt-6 flex flex-wrap gap-2">
         {p.tech.map((t) => <span key={t} className="chip">{t}</span>)}
       </div>

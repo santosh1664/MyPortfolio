@@ -1,24 +1,31 @@
 # Experience
 
-Total professional experience (as of Feb 2026): approximately 3 years
-(June 2021 - July 2023 at Zensar Technologies, May 2025 - Present at Citi Group).
+Total professional experience: 3+ years
+(Zensar Technologies Jun 2021 - Jul 2023; Citigroup Jun 2025 - Present).
 
-Citi Group - Software Engineer (May 2025 - Present)
-- Developed and enhanced user-facing web applications using React.js, building reusable and responsive UI components for enterprise financial platforms.
-- Improved frontend performance by about 25% through optimized API consumption, memoization, efficient state management, and fewer unnecessary re-renders.
-- Implemented client-side validation, dynamic form handling, and conditional rendering logic to improve usability and reduce backend validation errors.
-- Integrated React components with Java 17 and Spring Boot microservices to keep frontend-backend communication consistent and reliable.
-- Developed and maintained RESTful APIs with validation, exception handling, and secure access control using Spring Security and JWT-based authentication.
-- Worked with Kafka and DynamoDB to support reliable backend processing and low-latency UI-driven workflows.
-- Participated in API contract discussions and maintained backward compatibility to reduce frontend regressions during releases.
-- Diagnosed and resolved production issues across frontend and backend layers, improving stability and reducing recurring defects.
-- Contributed to CI/CD pipelines and containerized deployments using Docker, Kubernetes, Jenkins, and GitLab CI.
+Citigroup - Software Engineer (Jun 2025 - Present), New Jersey, remote
+Tech: Google ADK for Java, Java 17, Python, Spring Boot, Spring Security, React.js, TypeScript, Kafka, DynamoDB, JWT, JUnit, Mockito, Docker, Kubernetes, Jenkins, GitLab CI
+- Built AI agent workflows with Google ADK for Java that automate 12 multi-step financial processes; agents call enterprise APIs only through deterministic business-rule checks, keeping decisions predictable and auditable. Cut manual processing steps by 30%.
+- Maintain 15 secure REST endpoints (Spring Security, JWT, centralized validation and exception handling) serving 50K+ requests a day at 99.9% availability.
+- Build and maintain end-to-end financial workflows in React.js, Java 17, and Spring Boot used by 500+ internal users across 8 production microservices.
+- Work on Kafka and DynamoDB event pipelines that feed agent and UI services, validating payloads and tracing failed or delayed transactions.
+- Cut page-load time from 3.2s to 2.4s by removing redundant API calls, memoizing expensive React components, and simplifying state management.
+- Resolved 20+ production incidents using logs, API traces, event payloads, and Python log-analysis scripts, then added JUnit/Mockito regression tests.
+- Shortened code-to-production time from 2 days to 6 hours by automating build and release steps across Docker, Kubernetes, Jenkins, and GitLab CI.
+- Contributed to architecture reviews and API-contract decisions for 6 team-owned services.
 
-Zensar Technologies - Software Developer (June 2021 - July 2023)
-- Worked on end-to-end feature development across Angular 15, React.js, and Spring Boot within a microservices-based financial application.
-- Built reusable UI components, client-side form validations, and dynamic data handling, improving development speed by about 30%.
-- Integrated frontend modules with REST APIs and handled async loading and error states to keep user interactions smooth.
-- Developed RESTful APIs using Java and Spring Boot with input validation, exception handling, and secure service integration.
-- Assisted with Kafka-based workflows for asynchronous transaction-related backend processing.
-- Contributed to PCI DSS-compliant financial modules, reducing transaction processing errors by around 20% through stronger validation and error handling.
-- Participated in AWS deployments and CI/CD automation using Jenkins and Docker in Agile release cycles.
+Zensar Technologies - Software Developer (Jun 2022 - Jul 2023), Hyderabad, India
+Tech: Java, Spring Boot, Hibernate/JPA, Angular, React.js, RESTful APIs, Kafka, JUnit, Mockito, Maven, Jenkins, Docker, AWS
+- Developed full-stack features with Angular, React.js, Java, and Spring Boot for a microservices-based financial-services platform.
+- Designed RESTful APIs with validation, exception handling, and Spring Data JPA/Hibernate, keeping API contracts stable across releases.
+- Built reusable frontend components and shared validation utilities, reducing repetitive development effort by about 30%.
+- Improved validation and exception handling in transaction processing, reducing processing errors by about 20%.
+- Updated Kafka producers and consumers and analyzed failed events in asynchronous workflows.
+- Applied PCI DSS-aligned secure coding, keeping payment data out of logs, exceptions, and API responses.
+- Supported builds and deployments with Maven, Jenkins, Docker, and AWS in Agile delivery cycles.
+
+Zensar Technologies - Junior Software Developer (Jun 2021 - May 2022), Hyderabad, India
+- Built reusable Angular and React.js UI components, forms, and client-side validation for a financial-services application.
+- Integrated frontend modules with REST APIs, handling async requests, loading states, and error messages.
+- Reproduced and fixed reported issues from logs and network responses; wrote unit tests and joined peer code reviews.
+- Managed stories and defects in Git and Jira within Agile sprints.

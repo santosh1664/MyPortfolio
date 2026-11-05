@@ -4,14 +4,14 @@ export const resumeProfile = {
   location: "Dallas, Texas, USA",
   openToRelocation: true,
   summary:
-    "My name is Durgasantosh G. I am a Software Engineer with over 3 years of experience building responsive and high-performance web applications using React.js and Spring Boot. I completed my Master's in Computer Science at the University of North Texas, and my work has focused on reusable UI components, secure RESTful APIs, microservices-based architectures, AWS-based CI/CD workflows, production support, and AI-powered conversational systems.",
-  experience: "I have over 3 years of professional experience as a Software Engineer.",
+    "My name is Durgasantosh G. I am a Software Engineer with 3+ years in Java and Python. At Citigroup I build AI agent workflows with Google ADK for Java and full-stack financial workflows in React.js, Java 17, and Spring Boot used by 500+ internal users across 8 microservices. I also built and run rejekt.ai, a live Generative AI interview platform using RAG, LangGraph, OpenAI/Gemini, and real-time Whisper voice. I hold a Master's in Computer Science from the University of North Texas (GPA 3.82), co-authored an ACM W4A '24 accessibility paper, and am an AWS Certified Developer.",
+  experience: "I have 3+ years of professional experience: Software Engineer at Citigroup since June 2025, and Software Developer / Junior Software Developer at Zensar Technologies from June 2021 to July 2023.",
   currentJob:
-    "I currently work at Citi Group as a Software Engineer, where I build React.js interfaces, integrate them with Java 17 and Spring Boot microservices, maintain secure RESTful APIs, and support Kafka, DynamoDB, Docker, Kubernetes, Jenkins, and GitLab CI workflows.",
+    "I am a Software Engineer at Citigroup. I build AI agent workflows with Google ADK for Java that automate 12 multi-step financial processes, maintain 15 secure REST endpoints serving 50K+ requests a day at 99.9% availability, and work on Kafka and DynamoDB event pipelines with React.js, Java 17, and Spring Boot.",
   project:
-    "One of my key projects is Beyond Sight, an AI-powered accessibility system that converts charts and graphs into audio narratives for visually impaired users. The project achieved 92% accuracy and was presented at ACM W4A ’24.",
+    "My flagship project is rejekt.ai, a live Generative AI interview platform with a LangGraph adaptive engine, RAG over ChromaDB, OpenAI/Gemini, and real-time Whisper voice, plus a pipeline that has processed 2.02M+ job listings. I also co-developed Beyond Sight, an accessibility system that turns charts into audio (92% classification accuracy), published at ACM W4A '24.",
   skills:
-    "My core skills include Java, Python, JavaScript, TypeScript, SQL, React.js, Angular, Spring Boot, Spring Security, RESTful APIs, microservices, Apache Kafka, RabbitMQ, AWS, Docker, Kubernetes, Jenkins, Git, Postman, and AI tooling such as RAG, AI agents, LLM orchestration, and SentenceTransformers.",
+    "My core skills are Java 17, Spring Boot, Python, FastAPI, React.js, Angular, Kafka, and AWS, plus Generative AI work with LLMs, AI agents (Google ADK, LangGraph, LangChain), RAG, MCP, and vector databases. I ship with Docker, Kubernetes, Jenkins, GitLab CI, and GitHub Actions, and test with JUnit, Mockito, and pytest.",
   angular:
     "I used Angular at Zensar Technologies while building responsive frontend interfaces alongside React.",
   certifications:

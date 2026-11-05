@@ -8,21 +8,29 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/durgasantosh-g/",
   github: "https://github.com/santosh1664",
   resumeLink: (import.meta.env.VITE_RESUME_URL || "/Durgasantosh_G_Software_Engineer.pdf"), // Make sure your resume is in public/
-  bio: "Software Engineer with 3+ years of experience across full-stack development, building scalable applications using Java, Spring Boot, React, and AWS. Experienced in microservices, CI/CD pipelines, and delivering enterprise-grade systems in Agile environments.",
-  shortBio: "I build things for the web." // For Hero section
+  bio: "Software Engineer with 3+ years in Java and Python, currently building AI agent workflows with Google ADK for Java on Citigroup's financial platforms (8 microservices, 500+ internal users). I also built and run rejekt.ai, a live Generative AI interview platform using RAG, LangGraph, OpenAI/Gemini, and real-time Whisper voice.",
+  shortBio: "Full-stack and AI systems, from Spring Boot microservices to LLM agents.",
 };
+
+export const heroStats = [
+  { k: "3+", v: "Years shipping production software in Java, Python & React" },
+  { k: "500+", v: "Internal users on Citigroup workflows I build" },
+  { k: "50K+", v: "Requests a day across 15 secure REST endpoints, 99.9% uptime" },
+  { k: "2.02M", v: "Job listings processed by rejekt.ai's 19-source pipeline" },
+];
 
 export const education = [
   {
-    institution: "University of North Texas(UNT), Denton, Texas",
+    institution: "University of North Texas (UNT), Denton, Texas",
     degree: "Master of Science in Computer Science",
-    score: "CGPA: 3.82/4",
+    duration: "Aug 2023 – May 2025",
+    score: "GPA: 3.82/4",
   },
   {
-    institution: " Vellore Institute of Technology(VIT), Chennai",
+    institution: "Vellore Institute of Technology (VIT), Chennai",
     degree: "Bachelor of Technology in Computer Science",
+    duration: "Aug 2018 – May 2022",
   },
-
 ];
 
 export const certifications = [
@@ -49,112 +57,109 @@ export const certifications = [
 export const experience = [
   {
     role: "Software Engineer",
-    company: "Citi Group",
-    location: "New Jersey, USA",
-    duration: "May 2025 – Present",
-    tech: [
-      "React.js",
-      "Java 17",
-      "Spring Boot",
-      "Spring Security",
-      "Apache Kafka",
-      "AWS",
-      "Docker",
-      "Kubernetes",
-      "Jenkins",
-      "JWT",
-      "DynamoDB",
-      "GitLab CI"
-    ],
+    company: "Citigroup",
+    location: "New Jersey · Remote",
+    duration: "Jun 2025 – Present",
+    tech: ["Google ADK for Java", "Java 17", "Python", "Spring Boot", "Spring Security", "React.js", "TypeScript", "Kafka", "DynamoDB", "JWT", "JUnit", "Mockito", "Docker", "Kubernetes", "Jenkins", "GitLab CI"],
     points: [
-      "Developed and enhanced user-facing web applications using React.js, building reusable and responsive UI components for enterprise financial platforms.",
-      "Improved frontend performance by about 25% through optimized API consumption, memoization, efficient state management, and fewer unnecessary re-renders.",
-      "Implemented client-side validation, dynamic form handling, and conditional rendering logic to improve usability and reduce backend validation errors.",
-      "Integrated React components with Java 17 and Spring Boot microservices to keep frontend-backend communication consistent and reliable.",
-      "Developed and maintained RESTful APIs with validation, exception handling, and secure access control using Spring Security and JWT-based authentication.",
-      "Worked with Kafka and DynamoDB to support reliable backend processing and low-latency UI-driven workflows.",
-      "Participated in API contract discussions and maintained backward compatibility to reduce frontend regressions during releases.",
-      "Diagnosed and resolved production issues across frontend and backend layers, improving stability and reducing recurring defects.",
-      "Contributed to CI/CD pipelines and containerized deployments using Docker, Kubernetes, Jenkins, and GitLab CI."
+      "Built AI agent workflows with Google ADK for Java that automate 12 multi-step financial processes; agents call enterprise APIs only through deterministic business-rule checks, keeping every decision predictable and auditable. Cut manual processing steps by 30%.",
+      "Maintain 15 secure REST endpoints (Spring Security, JWT, centralized validation and exception handling) that serve agent-integrated workflows at 50K+ requests a day and 99.9% availability.",
+      "Build and maintain end-to-end financial workflows in React.js, Java 17, and Spring Boot used by 500+ internal users across 8 production microservices.",
+      "Work on Kafka and DynamoDB event pipelines that feed agent and UI services, validating payloads and tracing failed or delayed transactions back to their source.",
+      "Cut page-load time from 3.2s to 2.4s by removing redundant API calls, memoizing expensive React components, and simplifying state management.",
+      "Investigated and resolved 20+ production incidents using application logs, API traces, event payloads, and Python log-analysis scripts, then added JUnit/Mockito regression tests so the same defects did not return.",
+      "Shortened code-to-production time from 2 days to 6 hours by automating build and release steps across Docker, Kubernetes, Jenkins, and GitLab CI.",
+      "Contributed to architecture reviews and API-contract decisions for 6 team-owned services, and created reusable React integration patterns that keep frontend and backend data consistent.",
     ],
   },
   {
     role: "Software Developer",
     company: "Zensar Technologies",
-    location: "India",
-    duration: "Jun 2021 – Jul 2023",
-    tech: [
-      "React",
-      "Angular 15",
-      "Java",
-      "Spring Boot",
-      "Microservices",
-      "Apache Kafka",
-      "AWS",
-      "Docker",
-      "Jenkins"
-    ],
+    location: "Hyderabad, India",
+    duration: "Jun 2022 – Jul 2023",
+    tech: ["Java", "Spring Boot", "Hibernate/JPA", "Angular", "React.js", "TypeScript", "RESTful APIs", "Kafka", "JUnit", "Mockito", "Maven", "Jenkins", "Docker", "AWS"],
     points: [
-      "Worked on end-to-end feature development across Angular 15, React.js, and Spring Boot within a microservices-based financial application.",
-      "Built reusable UI components, client-side form validations, and dynamic data handling, improving development speed by about 30%.",
-      "Integrated frontend modules with REST APIs and handled async loading and error states to keep user interactions smooth.",
-      "Developed RESTful APIs using Java and Spring Boot with input validation, exception handling, and secure service integration.",
-      "Assisted with Kafka-based workflows for asynchronous transaction-related backend processing.",
-      "Contributed to PCI DSS-compliant financial modules, reducing transaction processing errors by around 20% through stronger validation and error handling.",
-      "Participated in AWS deployments and CI/CD automation using Jenkins and Docker in Agile release cycles."
+      "Developed and maintained full-stack features using Angular, React.js, Java, and Spring Boot for a microservices-based financial-services platform.",
+      "Designed and enhanced RESTful APIs with request validation, exception handling, Spring Data JPA/Hibernate database interactions, and downstream service integration, keeping API contracts stable across releases.",
+      "Created reusable frontend components, shared validation utilities, and common data-handling workflows, reducing repetitive development effort by approximately 30%.",
+      "Integrated frontend modules with backend services, handling asynchronous requests, loading states, validation failures, and API errors to keep user experiences reliable during degraded service conditions.",
+      "Strengthened transaction-processing workflows through improved validation and exception handling, reducing processing errors by approximately 20% within supported financial modules.",
+      "Updated Kafka producers and consumers, validated message payloads, and analyzed failed events to resolve transaction-processing issues in asynchronous workflows.",
+      "Applied secure coding practices to PCI DSS–aligned modules, keeping sensitive payment information out of application logs, exception messages, and API responses.",
+      "Investigated cross-stack defects using application logs, API responses, and JUnit/Mockito regression tests, coordinating fixes with developers and QA engineers before release.",
+      "Supported builds and deployments using Maven, Jenkins, Docker, and AWS, monitoring releases for configuration and runtime issues within Agile delivery cycles.",
+    ],
+  },
+  {
+    role: "Junior Software Developer",
+    company: "Zensar Technologies",
+    location: "Hyderabad, India",
+    duration: "Jun 2021 – May 2022",
+    tech: ["Angular", "React.js", "Java", "REST APIs", "Git", "Jira"],
+    points: [
+      "Contributed to frontend development for a financial-services application using Angular and React.js, building reusable UI components, forms, and client-side validation.",
+      "Integrated frontend modules with existing REST APIs, handling asynchronous requests, loading states, validation failures, and user-facing error messages.",
+      "Reproduced reported issues by reviewing application logs and network responses, identified root causes, and implemented fixes with senior developer support.",
+      "Created and maintained unit tests, addressed defects found in regression testing, and took part in peer code reviews to improve reliability.",
+      "Managed stories and defects in Git and Jira while participating in sprint planning, daily stand-ups, and other Agile ceremonies.",
     ],
   },
 ];
 
 export const projects = [
   {
-    title: "Rejekt.ai — Job Discovery & Honest Resume Tailoring",
-    tech: ["JavaScript", "Local LLM (Ollama)", "PostgreSQL", "Web Scraping", "ATS Scoring", "Automation"],
+    title: "rejekt.ai — Generative AI Interview Preparation Platform",
+    tech: ["Python", "FastAPI", "LangChain", "LangGraph", "OpenAI", "Google Gemini", "MCP", "SentenceTransformers", "ChromaDB", "Whisper", "TTS", "PostgreSQL", "Redis", "AWS ECS Fargate", "Docker", "GitHub Actions", "pytest"],
     description:
-      "Finds jobs straight from company career pages (Greenhouse, Lever, Ashby, Workday and more), scores each posting against your resume, tailors the resume to the posting without inventing anything, runs an ATS-style score, and can auto-apply with an approval step. Runs locally so resumes and job data stay on your machine.",
+      "A live Generative AI platform with 6 interview modes that generates personalized technical, behavioral, and company-specific mock interviews. A LangGraph adaptive engine keeps multi-turn context, asks targeted follow-ups, and scores answers on 5 dimensions: technical accuracy, STAR structure, communication, filler words, and missing concepts.",
+    highlights: [
+      "End-to-end RAG with SentenceTransformers embeddings and ChromaDB, grounding questions and feedback in the candidate's resume and the job description.",
+      "Real-time voice interviews with Whisper speech-to-text and text-to-speech; OpenAI and Gemini integrated through LLM workflows and Model Context Protocol (MCP) tools.",
+      "FastAPI services for auth, orchestration, AI evaluation, reporting, billing and credits on PostgreSQL + Redis, shipped on AWS ECS Fargate, RDS, S3, ALB and CloudWatch with Docker, GitHub Actions and pytest.",
+      "Ingestion pipelines across 19 job sources: 2.02M+ listings processed, ~115,600 qualified records kept after validation, normalization, classification and deduplication.",
+    ],
     date: "Jan 2026 – Present",
     githubLink: "https://github.com/santosh1664/rejekt-ai",
-    liveLink: null,
-    category: "AI / Featured Project",
+    liveLink: "https://www.rejekt.ai",
+    category: "Generative AI · Featured",
     iconName: "FaRobot",
   },
   {
-    title: "Agentic AI Resume Chatbot with RAG (In Progress)",
-    tech: [
-      "React",
-      "FastAPI",
-      "ChromaDB",
-      "SentenceTransformers",
-      "RAG Pipeline",
-      "GPT-4o-mini",
-      "Session Memory"
-    ],
+    title: "Beyond Sight — Audible Graphs for the Visually Impaired (ACM W4A '24)",
+    tech: ["Python", "PyTorch", "TensorFlow", "ResNet", "Tesseract OCR", "spaCy", "Pandas", "NumPy", "TTS"],
     description:
-      "Built a production-ready agentic AI chatbot for my portfolio using Retrieval-Augmented Generation (RAG) with a React frontend and FastAPI backend. It uses ChromaDB vector search, SentenceTransformers embeddings, session-based memory, and grounded responses with deterministic fallback behavior.",
-    date: "Jan 2025 – May 2025",
-    githubLink: null,
-    liveLink: "https://santoshroy.info",
-    category: "Completed Project",
-    iconName: "FaComments",
-  },
-  {title: "Accessible Weather & Shelter Finder",
-    tech: ["React", "Node.js", "MongoDB", "Text-to-Speech", "Geolocation", "Accessibility"],
-    description:"Built an accessible, life-saving web application for blind and visually impaired users. Provides real-time weather updates, severe weather alerts, and nearest shelter locations with full accessibility support including keyboard navigation, high-contrast UI, shortcut keys, and integrated text-to-speech.",
-    date: "Oct 2024 – May 2025",
-    githubLink: null,
-    liveLink: "https://accessible-weather-shelter-1.onrender.com/",
-    category: "Accessibility / Completed Project",
-    iconName: "FaUniversalAccess",
-  },
-  { title: "Beyond Sight – Audible Graphs for the Visually Impaired",
-    tech: ["Python", "TensorFlow", "PyTorch", "OCR", "NLP", "TTS"],
-    description:"AI accessibility system converting graphs and images into speech for visually-impaired users using CNNs, OCR & TTS. Presented at ACM W4A 2024.",
-    date: "Aug 2023 – Oct 2024",
-    // githubLink: "https://github.com/santosh1664",
+      "Co-developed a machine learning accessibility system that turns bar, line, and pie charts (Excel data and chart images) into audio narratives and structured text. Co-authored the paper published in the proceedings of the 21st International Web for All Conference (ACM W4A '24), which won the Accessibility Challenge Judges' Award.",
+    highlights: [
+      "Fine-tuned and benchmarked an ImageNet-pretrained ResNet in PyTorch and TensorFlow: 92% accuracy in chart classification and data extraction.",
+      "3-stage text pipeline (text-region detection, OCR, text-role classification) with Pandas, NumPy, spaCy and Tesseract, extracting titles, axes, legends and values at 85% precision.",
+      "Outputs in 3 accessible formats (raw data tables, multi-level summaries, spoken descriptions) with screen-reader-compatible text-to-speech.",
+    ],
+    date: "Sep 2023 – Apr 2024",
     award: "https://wajdialjedaani.com/certificates/AccessbilityChallenge.pdf",
     liveLink2: "https://wajdialjedaani.com/tools/tool.html?id=tool1",
-    category: "AI / Accessibility",
-    iconName: "FaUniversalAccess"
+    category: "AI / Accessibility Research",
+    iconName: "FaUniversalAccess",
+  },
+  {
+    title: "Agentic AI Resume Chatbot with RAG",
+    tech: ["React", "FastAPI", "RAG Pipeline", "Embeddings", "Intent Routing", "Prompt Templates"],
+    description:
+      "The chatbot on this site: an interactive resume assistant that uses intent routing, embeddings, and retrieval-augmented generation over structured resume data to answer recruiter questions instantly, with a guided category menu and quick-question chips for fast screening.",
+    date: "Jan 2025 – Present",
+    githubLink: "https://github.com/santosh1664/MyPortfolio",
+    liveLink: null,
+    category: "AI / Ongoing",
+    iconName: "FaComments",
+  },
+  {
+    title: "Accessible Weather & Shelter Finder",
+    tech: ["React", "Node.js", "MongoDB", "Text-to-Speech", "Geolocation", "Accessibility"],
+    description: "An accessible web app for blind and visually impaired users with real-time weather, severe-weather alerts, and the nearest shelter locations, built with keyboard navigation, shortcut keys, a high-contrast UI, and integrated text-to-speech.",
+    date: "Oct 2024 – Present",
+    githubLink: null,
+    liveLink: null,
+    category: "Accessibility / Current",
+    iconName: "FaUniversalAccess",
   },
   {
     title: "Dynamic Pricing Prediction for Cabs",
@@ -246,91 +251,34 @@ export const projects = [
 
 export const skills = {
   languages: [
-    { name: "Java", iconName: "FaJava" },
-    { name: "Python", iconName: "FaPython" },
-    { name: "JavaScript", iconName: "SiJavascript" },
-    { name: "TypeScript", iconName: "SiTypescript" },
-    { name: "C++", iconName: "SiCplusplus" },
-    { name: "C#", iconName: "SiCsharp" },
-    { name: "SQL", iconName: "FaDatabase" },
-    { name: "HTML5", iconName: "FaHtml5" },
-    { name: "CSS3", iconName: "FaCss3Alt" },
-    { name: "XML", iconName: "FaCode" },
-    { name: "JSON", iconName: "FaCode" }
+    { name: "Java 17" }, { name: "Python" }, { name: "TypeScript" }, { name: "JavaScript" }, { name: "SQL" },
+    { name: "Go" }, { name: "C++" }, { name: "HTML5 / CSS3" },
   ],
-
-  frameworksAndLibraries: [
-    { name: "Spring Boot", iconName: "SiSpringboot" },
-    { name: "React.js", iconName: "FaReact" },
-    { name: "Angular", iconName: "FaAngular" },
-    { name: "Bootstrap 5", iconName: "FaBootstrap" },
-    { name: "React Hooks", iconName: "FaReact" },
-    { name: "Redux", iconName: "FaProjectDiagram" },
-    { name: "GraphQL", iconName: "FaProjectDiagram" },
-    { name: "jQuery", iconName: "SiJquery" },
-    { name: "AJAX", iconName: "FaExchangeAlt" },
-    { name: "Spring MVC", iconName: "FaCloud" },
-    { name: "Spring REST", iconName: "FaCloud" },
-    { name: "Spring Security", iconName: "FaLock" },
-    { name: "Spring Batch", iconName: "FaCogs" },
-    { name: "Spring ORM", iconName: "FaDatabase" },
-    { name: "REST APIs", iconName: "FaCloud" },
-    { name: "Microservices", iconName: "FaProjectDiagram" },
-  ],
-
   aiAndDataEngineering: [
-    { name: "TensorFlow", iconName: "SiTensorflow" },
-    { name: "PyTorch", iconName: "SiPytorch" },
-    { name: "Scikit-Learn", iconName: "SiScikitlearn" },
-    { name: "AI Agents", iconName: "FaRobot" },
-    { name: "RAG", iconName: "FaBrain" },
-    { name: "LLM Orchestration", iconName: "FaCogs" },
-    { name: "SentenceTransformers", iconName: "FaProjectDiagram" },
-    { name: "Pandas", iconName: "SiPandas" },
-    { name: "NumPy", iconName: "SiNumpy" },
-    { name: "OCR", iconName: "FaEye" },
-    { name: "NLP", iconName: "FaLanguage" },
-    { name: "Kafka", iconName: "SiApachekafka" },
-    { name: "ETL Pipelines", iconName: "FaCogs" },
-    { name: "Data Streaming", iconName: "FaStream" },
-    { name: "Scikit-Learn", iconName: "SiScikitlearn" }
+    { name: "Generative AI" }, { name: "LLMs" }, { name: "AI Agents" }, { name: "RAG" }, { name: "LangChain" }, { name: "LangGraph" },
+    { name: "Google ADK" }, { name: "Model Context Protocol (MCP)" }, { name: "OpenAI API" }, { name: "Google Gemini" },
+    { name: "Prompt & Context Engineering" }, { name: "LLM Evaluation" }, { name: "Vector Embeddings" }, { name: "SentenceTransformers" },
+    { name: "Model Fine-tuning" }, { name: "PyTorch" }, { name: "TensorFlow" }, { name: "spaCy" }, { name: "Tesseract OCR" },
+    { name: "Whisper" }, { name: "Pandas" }, { name: "NumPy" }, { name: "ETL / Data Pipelines" },
   ],
-
+  frameworksAndLibraries: [
+    { name: "Spring Boot" }, { name: "Spring Security" }, { name: "Spring MVC" }, { name: "Spring Data JPA / Hibernate" }, { name: "FastAPI" },
+    { name: "Node.js / Express" }, { name: "React.js" }, { name: "Angular" }, { name: "Redux" }, { name: "Kafka" },
+    { name: "Microservices" }, { name: "RESTful APIs" }, { name: "JWT" },
+  ],
+  databases: [
+    { name: "PostgreSQL" }, { name: "MySQL" }, { name: "DynamoDB" }, { name: "Redis" }, { name: "ChromaDB" }, { name: "MongoDB" },
+  ],
   toolsAndPlatforms: [
-    { name: "AWS", iconName: "FaAws" },
-    { name: "Kubernetes", iconName: "SiKubernetes" },
-    { name: "Docker", iconName: "FaDocker" },
-    { name: "Git", iconName: "FaGitAlt" },
-    { name: "Jenkins", iconName: "SiJenkins" },
-    { name: "Linux", iconName: "FaLinux" },
-    { name: "Postman", iconName: "SiPostman" },
-    { name: "VS Code", iconName: "SiVscodium" },
-    { name: "IntelliJ IDEA", iconName: "SiIntellijidea" },
-    { name: "Eclipse", iconName: "FaCode" },
-    { name: "Maven", iconName: "FaCogs" },
-    { name: "Oracle", iconName: "FaDatabase" },
-    { name: "PostgreSQL", iconName: "SiPostgresql" },
-    { name: "MySQL", iconName: "SiMysql" },
-    { name: "SQL Server", iconName: "FaDatabase" },
-    { name: "DB2", iconName: "FaDatabase" },
-    { name: "MongoDB", iconName: "SiMongodb" },
-    { name: "DynamoDB", iconName: "SiAmazondynamodb" },
-    { name: "RabbitMQ", iconName: "FaExchangeAlt" },
-    { name: "ChromaDB", iconName: "FaDatabase" }
+    { name: "AWS (ECS Fargate, EC2, S3, RDS, SQS, CloudWatch)" }, { name: "Docker" }, { name: "Kubernetes" }, { name: "Jenkins" },
+    { name: "GitLab CI" }, { name: "GitHub Actions" }, { name: "Maven" }, { name: "Terraform" }, { name: "JUnit" }, { name: "Mockito" },
+    { name: "pytest" }, { name: "Postman" }, { name: "Git" }, { name: "Jira" }, { name: "Linux" },
   ],
-
   coreCompetencies: [
-    { name: "Problem Solving", iconName: "FaLightbulb" },
-    { name: "Data Structures & Algorithms", iconName: "FaProjectDiagram" },
-    { name: "System Design", iconName: "FaSitemap" },
-    { name: "API Design", iconName: "FaPlug" },
-    { name: "Team Leadership", iconName: "FaUsers" },
-    { name: "Agile Methodologies", iconName: "FaRunning" },
-    { name: "Communication", iconName: "FaComments" },
-    { name: "Presentations", iconName: "FaChalkboardTeacher" }
-  ]
+    { name: "System Design" }, { name: "API Contract Design" }, { name: "Data Structures & Algorithms" }, { name: "Root-cause Analysis" },
+    { name: "Technical Documentation" }, { name: "Agile / Scrum" }, { name: "Cross-functional Collaboration" },
+  ],
 };
-
 
 export const leadershipAndInvolvement = [
     {

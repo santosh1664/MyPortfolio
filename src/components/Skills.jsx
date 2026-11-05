@@ -4,11 +4,12 @@ import SectionTitle from './SectionTitle.jsx';
 import { skills } from '../data/portfolioData.jsx';
 
 const groups = [
-  { title: 'Languages & Databases', items: skills.languages },
-  { title: 'Frameworks & Backend', items: skills.frameworksAndLibraries },
-  { title: 'AI / ML & Data', items: skills.aiAndDataEngineering },
-  { title: 'Cloud, Infra & Tools', items: skills.toolsAndPlatforms },
-  { title: 'CS Fundamentals', items: skills.coreCompetencies },
+  { title: 'Languages', items: skills.languages },
+  { title: 'AI / ML & Agents', items: skills.aiAndDataEngineering },
+  { title: 'Backend & Frontend', items: skills.frameworksAndLibraries },
+  { title: 'Databases', items: skills.databases },
+  { title: 'Cloud, DevOps & Testing', items: skills.toolsAndPlatforms },
+  { title: 'Engineering Practice', items: skills.coreCompetencies },
 ];
 
 const Skills = () => {

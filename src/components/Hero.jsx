@@ -46,7 +46,7 @@ const Hero = () => {
             <Motion.div {...fade(0.1)} className="eyebrow mb-6 flex flex-wrap items-center gap-3">
               <span className="h-[2px] w-6 bg-accent" />
               <span>Software Engineer</span><span className="text-white/20">·</span>
-              <span>Full-Stack &amp; AI Systems</span><span className="text-white/20">·</span>
+              <span>AI Agents &amp; Full-Stack</span><span className="text-white/20">·</span>
               <span>Dallas, TX</span>
             </Motion.div>
 
@@ -55,7 +55,7 @@ const Hero = () => {
             </Motion.h1>
 
             <Motion.p {...fade(0.35)} className="mt-6 font-display text-2xl sm:text-3xl font-medium text-bone">
-              Building systems that scale.
+              Building intelligent systems.
               <span className="block font-serif italic font-normal text-bone/70">Engineering what's next.</span>
             </Motion.p>
 
@@ -90,11 +90,11 @@ const Hero = () => {
             <Portrait />
             <div className="absolute bottom-8 left-0 z-20 card px-4 py-3">
               <div className="eyebrow !text-[10px]">Currently</div>
-              <div className="mt-1 font-display text-sm text-bone">Software Engineer · Citi</div>
+              <div className="mt-1 font-display text-sm text-bone">Software Engineer · Citigroup</div>
             </div>
             <div className="absolute right-0 top-24 z-20 card px-4 py-3">
-              <div className="eyebrow !text-[10px]">Published</div>
-              <div className="mt-1 font-display text-sm text-bone">ACM W4A '24</div>
+              <div className="eyebrow !text-[10px]">Building</div>
+              <div className="mt-1 font-display text-sm text-bone">rejekt.ai · live</div>
             </div>
           </Motion.div>
         </Motion.div>

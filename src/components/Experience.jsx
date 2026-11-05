@@ -11,7 +11,7 @@ const Experience = () => (
           <SectionTitle id="experience-title" index="04" kicker="Career">Experience</SectionTitle>
           <ol className="relative space-y-12 border-l border-line pl-8 sm:pl-12">
             {experience.map((job, i) => (
-              <li key={job.company} className="relative">
+              <li key={job.duration} className="relative">
                 <span className={`absolute -left-[37px] sm:-left-[53px] top-1.5 h-3 w-3 rounded-full ring-4 ring-ink ${i === 0 ? 'bg-accent shadow-[0_0_16px_rgba(255,45,85,0.8)]' : 'bg-white/40'}`} />
                 <div className="grid gap-6 lg:grid-cols-[260px_1fr]">
                   <div>

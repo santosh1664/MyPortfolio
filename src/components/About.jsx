@@ -1,14 +1,8 @@
 import React from 'react';
 import Tilt from './Tilt.jsx';
 import SectionTitle from './SectionTitle.jsx';
-import { personalInfo, education } from '../data/portfolioData.jsx';
+import { personalInfo, education, heroStats as stats } from '../data/portfolioData.jsx';
 
-const stats = [
-  { k: '3+', v: 'Years shipping production software' },
-  { k: '3.82', v: 'MS CS GPA · University of North Texas' },
-  { k: 'AWS', v: 'Certified Developer – Associate' },
-  { k: "W4A '24", v: 'ACM accessibility research, Judges’ Award' },
-];
 
 const About = () => (
   <section id="about" className="relative py-24 sm:py-32">
@@ -19,8 +13,8 @@ const About = () => (
           <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr]">
             <div>
               <p className="font-display text-2xl sm:text-3xl leading-snug text-bone">
-                I build enterprise-grade platforms and <span className="font-serif italic text-accent">intelligent</span> products —
-                from Spring Boot microservices and Kafka pipelines to LLM-powered tools.
+                I build <span className="font-serif italic text-accent">auditable</span> AI agents and the enterprise systems they run on —
+                from Spring Boot microservices and Kafka pipelines to RAG and LangGraph products.
               </p>
               <p className="mt-6 max-w-2xl leading-relaxed text-mute">{personalInfo.bio}</p>
               <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line">
@@ -44,6 +38,16 @@ const About = () => (
                   </li>
                 ))}
               </ol>
+              <div className="mt-4 grid grid-cols-2 gap-4">
+                <div className="rounded-xl border border-line bg-white/[0.02] p-5">
+                  <div className="eyebrow !text-[10px]">Certified</div>
+                  <div className="mt-2 font-display text-base font-semibold text-bone">AWS Developer – Associate</div>
+                </div>
+                <div className="rounded-xl border border-line bg-white/[0.02] p-5">
+                  <div className="eyebrow !text-[10px]">Published</div>
+                  <div className="mt-2 font-display text-base font-semibold text-bone">ACM W4A '24 · Judges' Award</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
