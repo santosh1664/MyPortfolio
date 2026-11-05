@@ -1,45 +1,32 @@
-// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      colors: { // Switched to CSS variables for theming
-        'primary-bg': 'rgb(var(--color-primary-bg) / <alpha-value>)',
-        'secondary-bg': 'rgb(var(--color-secondary-bg) / <alpha-value>)',
-        'accent-1': 'rgb(var(--color-accent-1) / <alpha-value>)',
-        'accent-2': 'rgb(var(--color-accent-2) / <alpha-value>)',
-        'text-primary': 'rgb(var(--color-text-primary) / <alpha-value>)',
-        'text-secondary': 'rgb(var(--color-text-secondary) / <alpha-value>)',
+      colors: {
+        ink: '#09090b',
+        panel: '#111115',
+        panel2: '#17171c',
+        line: 'rgba(255,255,255,0.08)',
+        bone: '#f4f1ea',
+        mute: '#9a9aa3',
+        accent: '#ff2d55',
+        // legacy tokens (kept so the chat widget / any old classes still resolve)
+        'primary-bg': '#09090b',
+        'secondary-bg': '#111115',
+        'accent-1': '#ff2d55',
+        'accent-2': '#ff2d55',
+        'text-primary': '#f4f1ea',
+        'text-secondary': '#9a9aa3',
       },
       fontFamily: {
-        // MODIFICATION: Set JetBrains Mono as the default sans-serif font
-        sans: ['"JetBrains Mono"', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
-        // The mono utility will also use JetBrains Mono, which is fine.
-        // You can keep it explicit or rely on sans being JetBrains Mono now.
-        // For clarity, keeping it explicit:
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+        display: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'Menlo', 'monospace'],
       },
-      animation: { // Your existing animations
-        'text-focus-in': 'text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both',
-        'slide-in-bottom': 'slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
-      },
-      keyframes: { // Your existing keyframes
-        'text-focus-in': {
-          '0%': { filter: 'blur(12px)', opacity: '0' },
-          '100%': { filter: 'blur(0px)', opacity: '1' },
-        },
-        'slide-in-bottom': {
-          '0%': { transform: 'translateY(50px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        }
-      },
-    }
+      letterSpacing: { tightest: '-0.055em' },
+    },
   },
-  plugins: [
-    // require('tailwind-scrollbar'), // If you added this
-  ],
-}
+  plugins: [],
+};

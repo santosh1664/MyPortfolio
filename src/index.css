@@ -1,95 +1,40 @@
-/* src/index.css */
-/* Import Google Fonts - must come before any tailwind or other rules */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Poppins:wght@400;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root,
-.theme-dark {
-  --color-primary-bg: 26 26 46;     /* #1a1a2e */
-  --color-secondary-bg: 22 33 62;   /* #16213e */
-  --color-accent-1: 0 245 195;      /* #00f5c3 */
-  --color-accent-2: 233 69 96;      /* #e94560 */
-  --color-text-primary: 224 224 224; /* #e0e0e0 */
-  --color-text-secondary: 160 160 160; /* #a0a0a0 */
-}
-
-.theme-light {
-  --color-primary-bg: 243 246 249;    /* #f3f6f9 */
-  --color-secondary-bg: 230 234 240;  /* #e6eaf0 */
-  --color-accent-1: 0 181 173;        /* teal variant */
-  --color-accent-2: 233 69 96;        /* keep accent pop */
-  --color-text-primary: 33 37 41;     /* #212529 */
-  --color-text-secondary: 90 99 110;  /* #5a636e */
-}
-
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
   body {
-    @apply bg-primary-bg text-text-primary font-sans antialiased;
+    @apply bg-ink text-bone font-sans antialiased;
+    background-image:
+      radial-gradient(1200px 600px at 85% -10%, rgba(255,45,85,0.10), transparent 60%),
+      radial-gradient(900px 500px at -10% 40%, rgba(255,255,255,0.035), transparent 60%);
+    background-attachment: fixed;
   }
-  ::selection {
-    @apply bg-accent-1 text-primary-bg;
+  ::selection { @apply bg-accent text-white; }
+  :focus-visible { outline: 2px solid #ff2d55; outline-offset: 3px; border-radius: 4px; }
+}
+
+@layer components {
+  .eyebrow { @apply font-mono text-[11px] sm:text-xs uppercase tracking-[0.22em] text-mute; }
+  .chip { @apply inline-flex items-center rounded-full border border-line bg-white/[0.03] px-3 py-1 font-mono text-[11px] text-bone/80; }
+  .btn-primary { @apply inline-flex items-center gap-2 rounded-full bg-bone px-6 py-3 font-mono text-xs uppercase tracking-[0.18em] text-ink transition hover:bg-white; }
+  .btn-ghost { @apply inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 font-mono text-xs uppercase tracking-[0.18em] text-bone transition hover:border-accent hover:text-accent; }
+  .card { @apply rounded-2xl border border-line bg-panel/80 backdrop-blur-sm; }
+  .grid-bg {
+    background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
   }
 }
 
-/* Custom scrollbar (using your previous example) */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  @apply bg-secondary-bg;
-}
-::-webkit-scrollbar-thumb {
-  @apply bg-accent-1 rounded-full;
-}
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-opacity-80;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #09090b; }
+::-webkit-scrollbar-thumb { background: #2a2a31; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #ff2d55; }
 
-/* For section transitions (using your previous example) */
-.section-fade-in {
-  opacity: 0;
-  transform: translateY(20px);
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
-
-/* --- ADD THESE STYLES FOR CARD FLIP --- */
-.perspective {
-  perspective: 1000px; /* Creates the 3D space for children. Adjust value for more/less perspective. */
-}
-
-.experience-card-inner {
-  transform-style: preserve-3d; /* Allows children to be positioned in 3D space relative to this parent. */
-}
-
-.experience-card-front,
-.experience-card-back {
-  backface-visibility: hidden; /* Hides the back of the card when it's not facing the viewer. */
-  -webkit-backface-visibility: hidden; /* For Safari browser compatibility. */
-  /* Ensure transitions on transform if you want smoother manual flips, though Tailwind handles the main flip */
-  /* transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1); */ /* Example, already handled by Tailwind's duration class on inner div */
-}
-
-/* Utility for rotating Y - Tailwind's rotate-y-180 class should handle this,
-   but having it explicitly can be a fallback or for understanding.
-   Tailwind v3+ includes `rotate-y-180` by default.
-   If for some reason it's not working, this custom class can be used.
-   The Experience.jsx component uses Tailwind's `rotate-y-180` class.
-*/
-/*
-.rotate-y-180 {
-  transform: rotateY(180deg);
-}
-*/
-/* --- END OF CARD FLIP STYLES --- */
-
-/* If you had animation-delay classes for blobs, they are not needed for this card flip version */
-/*
-.animation-delay-2000 {
-  animation-delay: 2000ms;
-}
-*/

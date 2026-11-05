@@ -10,7 +10,7 @@ import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop'; // Optional
-import ResumeChatWidget from './components/ResumeChatWidget';
+import Assistant from './assistant/Assistant.jsx';
 
 function App() {
   return (
@@ -25,10 +25,10 @@ function App() {
         <Experience />
         <Involvement />
         <Contact />
-        <ResumeChatWidget />
       </main>
       <Footer />
       <ScrollToTop /> {/* Optional */}
+      <Assistant />
     </div>
   );
 }
