@@ -40,7 +40,7 @@ const Navbar = () => {
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3">
       <nav className={`mx-auto flex h-14 max-w-6xl items-center justify-between rounded-full border px-4 transition-all duration-300 sm:px-5 ${scrolled ? 'border-line bg-card/85 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.9)] backdrop-blur-md' : 'border-transparent'}`}>
-        <ScrollLink to="hero" href="#hero" smooth duration={600} className="flex cursor-pointer items-center gap-2.5">
+        <ScrollLink to="intro" href="#intro" smooth duration={600} className="flex cursor-pointer items-center gap-2.5">
           <Logo />
           <span className="font-display text-[17px] font-bold tracking-tight">santosh<span className="text-blue">.</span>info</span>
         </ScrollLink>
