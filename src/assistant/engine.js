@@ -10,11 +10,11 @@ const EMAIL = personalInfo.email;
 // Facts that are not in the section data. Edit these if anything changes.
 export const facts = {
   location: 'Dallas, Texas (DFW)',
-  relocation: 'Open to relocation, and comfortable with on-site, hybrid, or remote roles.',
+  relocation: 'Open to roles anywhere in the world: on-site, hybrid, or remote, and happy to relocate.',
   availability: 'Can start on short notice (about two weeks).',
   citiWhere: 'The role is based in New Jersey, and he works it remotely.',
   workAuth:
-    `Authorized to work in the United States. For specifics on visa status and any future sponsorship, please email ${EMAIL} — he'll answer directly.`,
+    'Open to opportunities worldwide. He is Indian and is authorized to work in the **United States** and **India**. For roles in any other country he would need visa sponsorship.',
   compensation:
     `Flexible and aligned with the role's scope and the company's range. He's happy to discuss specifics directly at ${EMAIL}.`,
   yearsLabel: '3+ years',
@@ -308,7 +308,7 @@ const ROUTES = [
   ['greet', [/^(hi|hey|hello|yo|hola|good (morning|afternoon|evening))\b/]],
   ['thanks', [/^(thanks|thank you|thx|great|cool|awesome)\b/]],
   ['salary', ['salary', 'compensation', 'pay ', 'expected pay', 'ctc', 'rate', 'hourly', 'package']],
-  ['visa', ['visa', 'sponsor', 'h1b', 'h-1b', 'opt', 'citizen', 'green card', 'work authorization', 'authorized', 'authorization', 'eligible to work']],
+  ['visa', ['visa', 'sponsor', 'h1b', 'h-1b', 'opt', 'citizen', 'nationality', 'green card', 'work authorization', 'authorized', 'authorization', 'eligible to work', 'right to work', 'work permit', 'other countries', 'other country', 'abroad', 'overseas', 'internationally', 'worldwide', 'europe', 'canada', ' uk ', 'united kingdom', 'germany', 'australia', 'singapore', 'dubai', 'work in india', 'work in the us', 'work in us']],
   ['availability', ['available', 'availability', 'notice', 'start date', 'when can', 'join', 'start']],
   ['location', ['where is he', 'located', 'location', 'relocat', 'remote', 'onsite', 'on-site', 'hybrid', 'based']],
   ['why', ['why should', 'why hire', 'why him', 'strength', 'stand out', 'unique', 'good fit', 'best at', 'value']],
@@ -435,6 +435,7 @@ export const recruiterSummary = () =>
   `Built: rejekt.ai — live GenAI interview platform (RAG, LangGraph, OpenAI/Gemini, Whisper)\n` +
   `MS CS, University of North Texas (3.82) · ACM W4A '24 co-author\n` +
   `${facts.availability} ${facts.relocation}\n` +
+  `Work authorization: US and India (Indian citizen); visa sponsorship needed for other countries.\n` +
   `Contact: ${EMAIL} · ${personalInfo.linkedin}`;
 
 export { HAS as SKILLS_HAVE, findSkills };

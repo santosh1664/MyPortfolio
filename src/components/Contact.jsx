@@ -21,7 +21,7 @@ const Contact = () => {
             <div className="font-mono text-[12px] text-white/70">06 · contact.sh</div>
             <h2 className="mt-4 max-w-3xl font-display text-5xl font-extrabold leading-[0.95] tracking-tightest sm:text-7xl">Let's ship something reliable.</h2>
             <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-white/80">
-              Open to Software Engineer roles across AI, backend and full-stack. Based in Dallas, open to relocation, on-site, hybrid or remote.
+              Open to Software Engineer roles across AI, backend and full-stack. Based in Dallas, open to roles worldwide. Authorized to work in the US and India; visa sponsorship needed elsewhere.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a href={`mailto:${personalInfo.email}`} className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-black hover:text-white">
