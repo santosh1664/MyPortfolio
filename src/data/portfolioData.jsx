@@ -141,6 +141,38 @@ export const projects = [
     iconName: "FaUniversalAccess",
   },
   {
+    title: "Computer-Use Automation System",
+    tech: ["TypeScript", "Python", "Playwright", "Chrome DevTools Protocol", "LLM agents", "Claude", "OpenAI / OpenRouter"],
+    description:
+      "AI agents that operate legacy banking back-office software through the UI: an LLM discovers a workflow once from screenshots and the accessibility tree, records it as a typed, versioned capability artifact, and production replays it deterministically with no LLM in the loop. Risky steps pause for a human, who takes over the same live browser session over CDP.",
+    highlights: [
+      "Discovery → typed JSON capability artifact → deterministic replay with multi-locator fallback, parameter substitution, a policy guard and a clear error taxonomy.",
+      "Human-in-the-loop handoff: replay pauses at risky confirmation steps and an operator attaches to the live browser over CDP.",
+      "Built twice: TypeScript (OpenAI / OpenRouter / scripted planner) and Python (Claude).",
+    ],
+    date: "2026",
+    githubLink: "https://github.com/santosh1664/computer-use-automation-system",
+    liveLink: null,
+    category: "AI Agents / Computer Use",
+    iconName: "FaRobot",
+  },
+  {
+    title: "Angel One Trader — 11 Claude Agent Skills",
+    tech: ["Python", "Claude Code plugin", "Agent skills", "Angel One SmartAPI", "Monte Carlo simulation"],
+    description:
+      "A Claude Code plugin of 11 agent skills for NSE intraday trading that hand off to each other: scan charts, read filings, time the entry, plan the exit, replay the trade 10,000 times, size it, risk-check it and paper-trade it. Live orders go to Angel One only after the user's explicit yes, with the stop-loss placed at the broker.",
+    highlights: [
+      "Pipeline: scanner → news → entry → exit → time machine → budget → risk → broker, with alerts, analyst and insider skills alongside.",
+      "Time machine: 10,000 replays from the stock's own 5-minute bars plus the same rule re-run on every past session.",
+      "Safety first: paper trading by default, PASS/BLOCK risk checks, human approval before any live order. Standard-library Python.",
+    ],
+    date: "2026",
+    githubLink: "https://github.com/santosh1664/Angle-agent-skills",
+    liveLink: null,
+    category: "AI Agents / Claude Skills",
+    iconName: "FaRobot",
+  },
+  {
     title: "Agentic AI Resume Chatbot with RAG",
     tech: ["React", "FastAPI", "RAG Pipeline", "Embeddings", "Intent Routing", "Prompt Templates"],
     description:
@@ -272,7 +304,7 @@ export const skills = {
   toolsAndPlatforms: [
     { name: "AWS (ECS Fargate, EC2, S3, RDS, SQS, CloudWatch)" }, { name: "Azure" }, { name: "GCP" }, { name: "Docker" }, { name: "Kubernetes" }, { name: "Jenkins" },
     { name: "GitLab CI" }, { name: "GitHub Actions" }, { name: "Maven" }, { name: "Terraform" }, { name: "JUnit" }, { name: "Mockito" },
-    { name: "pytest" }, { name: "Postman" }, { name: "Git" }, { name: "Jira" }, { name: "Linux" },
+    { name: "pytest" }, { name: "Playwright" }, { name: "Postman" }, { name: "Git" }, { name: "Jira" }, { name: "Linux" },
   ],
   coreCompetencies: [
     { name: "System Design" }, { name: "API Contract Design" }, { name: "Data Structures & Algorithms" }, { name: "Root-cause Analysis" },

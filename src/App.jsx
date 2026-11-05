@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import AILab from './components/AILab.jsx';
 import Hiring from './components/Hiring.jsx';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -18,6 +19,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <AILab />
         <Hiring />
         <About />
         <Skills />

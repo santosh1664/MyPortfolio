@@ -5,6 +5,7 @@ import { personalInfo } from '../data/portfolioData.jsx';
 import { askSantosh } from '../assistant/events.js';
 
 const navItems = [
+  { name: 'AI Lab', to: 'ai-lab' },
   { name: 'Impact', to: 'impact' },
   { name: 'About', to: 'about' },
   { name: 'Stack', to: 'skills' },

@@ -65,6 +65,7 @@ const ALIASES = {
   'CI/CD': ['ci/cd', 'cicd', 'continuous integration', 'continuous delivery'],
   'Terraform': ['terraform', 'infrastructure as code', 'iac'],
   'Maven': ['maven'],
+  'Playwright': ['playwright'],
   'JUnit / Mockito': ['junit', 'mockito'],
   'pytest': ['pytest'],
   'Git': ['git ', 'git,', 'version control'],
@@ -112,7 +113,7 @@ const HAS = new Set([
   'Terraform', 'Maven', 'JUnit / Mockito', 'pytest', 'Git', 'Linux', 'Generative AI', 'LLMs', 'AI agents', 'RAG', 'LangChain',
   'LangGraph', 'MCP', 'Prompt engineering', 'PyTorch', 'TensorFlow', 'Machine learning', 'NLP / OCR', 'Speech (Whisper/TTS)',
   'Data pipelines / ETL', 'Agile / Scrum', 'System design',
-  'Next.js', 'Azure', 'GCP', 'C#/.NET', 'GraphQL', 'Spark', 'RabbitMQ',
+  'Next.js', 'Azure', 'GCP', 'C#/.NET', 'GraphQL', 'Spark', 'RabbitMQ', 'Playwright',
 ]);
 
 const findSkills = (text) => {
@@ -160,6 +161,14 @@ const intro = () =>
     `**Credentials:** MS in Computer Science, University of North Texas (GPA 3.82) · AWS Certified Developer – Associate.`,
   ]);
 
+const projAnswer = (key) => {
+  const p = projects.find((x) => x.title.includes(key));
+  return {
+    text: `**${p.title}** · ${p.date}\n\n${p.description}\n\n${bullets(p.highlights || [])}\n\n**Stack:** ${p.tech.join(', ')}${p.githubLink ? `\n\nCode: [GitHub](${p.githubLink})` : ''}`,
+    follow: ['What AI work has he done?', 'Tell me more about rejekt.ai'],
+  };
+};
+
 const answers = {
   greet: () => ({
     text: `Hi! I'm ${ME}'s assistant. Ask me anything about his experience, projects, skills, or availability — or paste a job description and I'll check how well he fits.`,
@@ -188,6 +197,8 @@ const answers = {
         `**At ${cur.company}:** ${cur.points[0]}`,
         `**rejekt.ai:** ${rejekt.description}`,
         ...rejekt.highlights.slice(0, 2),
+        `**Computer-use agents:** an LLM discovers legacy-app workflows once, records typed capability artifacts, and production replays them deterministically with a human handoff on risky steps (Playwright + CDP; TypeScript and Python/Claude).`,
+        `**Agent skills:** a Claude Code plugin of 11 trading agent skills (scan → entry → exit → 10,000-replay time machine → risk → broker), paper by default with human approval before live orders.`,
         `**Research:** Beyond Sight — fine-tuned ResNet (92% chart-classification accuracy) + OCR/NLP pipeline (85% precision), published at ACM W4A '24.`,
       ]) +
       `\n\n**AI stack:** ${skillLine(skills.aiAndDataEngineering, 14)}`,
@@ -263,6 +274,8 @@ const answers = {
     follow: ['Cloud / DevOps experience?'],
   }),
   research: () => answers.beyond(),
+  computeruse: () => projAnswer('Computer-Use'),
+  trader: () => projAnswer('Angel One'),
   leadership: () => ({
     text: bullets(leadershipAndInvolvement.map((l) => `**${l.role}** — ${l.points[0]}`)) +
       `\n\nAt work he contributes to architecture reviews and API-contract decisions for 6 team-owned services and coordinates fixes across dev and QA.`,
@@ -299,6 +312,8 @@ const ROUTES = [
   ['contact', ['contact', 'email', 'reach', 'linkedin', 'resume', 'cv', 'phone', 'get in touch']],
   ['impact', ['impact', 'achievement', 'accomplish', 'metric', 'result', 'numbers', 'proud']],
   ['rejekt', ['rejekt', 'interview platform', 'interview prep']],
+  ['computeruse', ['computer use', 'computer-use', 'legacy app', 'playwright', 'browser automation', 'rpa', 'replay']],
+  ['trader', ['trading', 'trader', 'angel one', 'stock', 'claude skill', 'agent skill', 'plugin']],
   ['beyond', ['beyond sight', 'audible', 'visually impaired', 'accessibility']],
   ['research', ['research', 'paper', 'publication', 'publish', 'w4a', 'acm']],
   ['certs', ['certif', 'aws certified', 'credential']],
